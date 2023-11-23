@@ -4,6 +4,7 @@ import networkx as nx
 from estafeta import Estafeta
 from encomenda import Encomenda
 import algoritmos as alg
+import random
 
 
 class Application:
@@ -76,6 +77,12 @@ class Application:
         g, edges = build_graph()
         est1 = Estafeta(1, 1)
         enc1 = Encomenda(1, "Fabio", "3", "10", 3, 10)
+
+        encomendas = [
+            [i, f"Cliente_{i}", str(random.randint(1, 40)), str(
+                random.randint(1, 40)), random.randint(1, 10), random.randint(1, 10)]
+            for i in range(1, 101)
+        ]
 
         visited, path, cost = algorithm(g, enc1.origin, enc1.destination)
 
