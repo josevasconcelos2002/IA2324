@@ -6,7 +6,6 @@ import algoritmos as alg
 
 
 def build_graph():
-
     nodes_info = {}
     with open("./dados/freguesias.txt", "r") as file:
         i = 1
@@ -34,7 +33,8 @@ def draw_graph(g, edges):
 
     plt.figure(figsize=(14, 11))
     nx.draw(g, pos, with_labels=True, font_weight='bold')
-    edge_labels = {(edge[0], edge[1]): f"{edge[2]['distance']:.2f}" for edge in edges}
+    edge_labels = {(edge[0], edge[1])
+                    : f"{edge[2]['distance']:.2f}" for edge in edges}
     nx.draw_networkx_edge_labels(g, pos, edge_labels=edge_labels)
     plt.savefig("./dados/grafon.png", format="png")
     plt.show()
@@ -42,18 +42,36 @@ def draw_graph(g, edges):
 
 def main():
     g, edges = build_graph()
-    # draw_graph(g, edges)
 
-    # mini testes
+    print("\nEscolha o algoritmo:")
+    print("1. DFS")
+    print("2. BFS")
+    print("3. Custo Uniforme")
+    print("4. Sair")
+
+    escolha = input("\nDigite a opção desejada: ")
+
+    if escolha == "1":
+        algorithm = alg.dfs
+    elif escolha == "2":
+        algorithm = alg.bfs
+    elif escolha == "3":
+        algorithm = alg.custo_uniforme
+    elif escolha == "4":
+        return
+    else:
+        print("Escolha inválida. Saindo do programa.")
+        return
+
     est1 = Estafeta(1, 1)
     enc1 = Encomenda(1, "Fabio", "3", "10", 3, 10)
-    # print(est1.vehicle.value["speed"])
-    visited_dfs, path_dfs, cost_dfs = alg.dfs(g, enc1.origin, enc1.destination)
-    print(f"DFS:\nVisited: {visited_dfs}\nPath: {path_dfs}\nCost: {cost_dfs} kms")
-    visited_bfs, path_bfs, cost_bfs = alg.bfs(g, enc1.origin, enc1.destination)
-    print(f"BFS:\nVisited: {visited_bfs}\nPath: {path_bfs}\nCost: {cost_bfs} kms")
-    visited_custo_uniforme, path_custo_uniforme, cost_custo_uniforme = alg.custo_uniforme(g, enc1.origin, enc1.destination)
-    print(f"custo_uniforme:\nVisited: {visited_custo_uniforme}\nPath: {path_custo_uniforme}\nCost: {cost_custo_uniforme} kms")
+
+    visited, path, cost = algorithm(g, enc1.origin, enc1.destination)
+
+    print(f"\nResultado do algoritmo escolhido:")
+    print(f"\nVisited: {visited}")
+    print(f"\nPath: {path}")
+    print(f"\nCost: {cost} kms")
 
 
 if __name__ == "__main__":
