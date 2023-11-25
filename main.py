@@ -74,7 +74,7 @@ class Application:
             print("Escolha inválida.")
             return
 
-        g, edges = build_graph()
+        g = nx.read_gml('./dados/grafo.gml')
         est1 = Estafeta(1, 1)
         enc1 = Encomenda(1, "Fabio", "3", "10", 3, 10)
 
@@ -89,29 +89,7 @@ class Application:
         print(f"Resultado do algoritmo escolhido:")
         print(f"Visited: {visited}")
         print(f"Path: {path}")
-        print(f"Cost: {cost} kms")
-
-
-def build_graph():
-    nodes_info = {}
-    with open("./dados/freguesias.txt", "r") as file:
-        i = 1
-        for line in file:
-            freguesia = line.strip()
-            nodes_info.update({str(i): {"nome": freguesia, "ocupado": False}})
-            i += 1
-
-    edges = []
-    with open("./dados/arestas.txt", "r") as file:
-        for line in file:
-            origem, destino, distancia = line.split(";")
-            edges.append((origem, destino, {"distance": float(distancia)}))
-
-    g = nx.Graph()
-    g.add_nodes_from(nodes_info.keys())
-    g.add_edges_from(edges)
-
-    return g, edges
+        print(f"Cost: {cost} m")
 
 
 if __name__ == "__main__":
