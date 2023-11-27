@@ -56,9 +56,17 @@ class Application:
             self.frame_algoritmos, text="BFS", variable=self.algoritmo_var, value="bfs")
         self.radio_bfs.pack()
 
-        self.radio_custo_uniforme = ttk.Radiobutton(
-            self.frame_algoritmos, text="Custo Uniforme", variable=self.algoritmo_var, value="custo_uniforme")
-        self.radio_custo_uniforme.pack()
+        self.radio_dijkstra = ttk.Radiobutton(
+            self.frame_algoritmos, text="Dijkstra", variable=self.algoritmo_var, value="dijkstra")
+        self.radio_dijkstra.pack()
+
+        self.radio_iddfs = ttk.Radiobutton(
+            self.frame_algoritmos, text="IDDFS", variable=self.algoritmo_var, value="iddfs")
+        self.radio_iddfs.pack()
+
+        self.radio_bidirectional = ttk.Radiobutton(
+            self.frame_algoritmos, text="Bidirectional", variable=self.algoritmo_var, value="bidirectional")
+        self.radio_bidirectional.pack()
 
         self.btn_executar = ttk.Button(
             self.frame_algoritmos, text="Executar", command=self.executar_algoritmo)
@@ -124,15 +132,19 @@ class Application:
             algorithm = alg.dfs
         elif escolha == "bfs":
             algorithm = alg.bfs
-        elif escolha == "custo_uniforme":
-            algorithm = alg.custo_uniforme
+        elif escolha == "dijkstra":
+            algorithm = alg.dijkstra
+        elif escolha == "iddfs":
+            algorithm = alg.iddfs
+        elif escolha == "bidirectional":
+            algorithm = alg.bidirectional
         else:
             print("Escolha inválida.")
             return
 
         g = nx.read_gml('./dados/grafo.gml')
         est1 = Estafeta(1, 1)
-        enc1 = Encomenda(1, "Fabio", "3", "10", 3, 10)
+        enc1 = Encomenda(1, "Fabio", "3", "11", 3, 10)
 
         encomendas = [
             [i, f"Cliente_{i}", str(random.randint(1, 40)), str(
