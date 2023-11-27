@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3377cba6-4433-4e0c-adf0-4815fb94a9fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/algoritmos.py" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="3377cba6-4433-4e0c-adf0-4815fb94a9fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +98,7 @@
       <workItem from="1701002222157" duration="1278000" />
       <workItem from="1701009898651" duration="8775000" />
       <workItem from="1701104500709" duration="822000" />
-      <workItem from="1701105341024" duration="469000" />
+      <workItem from="1701105341024" duration="958000" />
     </task>
     <servers />
   </component>
