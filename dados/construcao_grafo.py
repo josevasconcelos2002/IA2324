@@ -45,8 +45,8 @@ for u, v, data in g_un_g.edges(data=True):
     data.pop('tunnel', None)
     data.pop('width', None)
 for node, data in g_un_g.nodes(data=True):
-    data.pop('x', None)
-    data.pop('y', None)
+    #data.pop('x', None)
+    #data.pop('y', None)
     data.pop('ref', None)
     data.pop('geometry', None)
     data.pop('highway', None)
