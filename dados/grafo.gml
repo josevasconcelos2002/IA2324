@@ -1,6 +1,6 @@
 graph [
-  created_date "2023-12-02 15:56:16"
-  created_with "OSMnx 1.7.1"
+  created_date "2023-12-20 19:20:05"
+  created_with "OSMnx 1.8.0"
   crs "epsg:4326"
   simplified 1
   node [
@@ -32279,7 +32279,7 @@ graph [
   ]
   node [
     id 5379
-    label "5380"
+    label "ORIGIN"
     y 41.5427746
     x -8.4324487
   ]
@@ -37143,8 +37143,8 @@ graph [
   edge [
     source 58
     target 210
-    name "Avenida Jo&#227;o Paulo II"
     name "Avenida General Carrilho da Silva Pinto"
+    name "Avenida Jo&#227;o Paulo II"
     length 428.996
     traffic 1
     blocked 0
@@ -37232,8 +37232,8 @@ graph [
   edge [
     source 64
     target 5784
-    name "Pra&#231;a do Bocage"
     name "Rua Padre Ant&#243;nio Vieira"
+    name "Pra&#231;a do Bocage"
     length 42.014
     traffic 1
     blocked 0
@@ -38003,8 +38003,8 @@ graph [
   edge [
     source 112
     target 3280
-    name "Pra&#231;a Alexandre Herculano"
     name "Avenida General Norton de Matos"
+    name "Pra&#231;a Alexandre Herculano"
     length 119.216
     traffic 1
     blocked 0
@@ -38028,8 +38028,8 @@ graph [
   edge [
     source 112
     target 2080
-    name "Rua dos Ch&#227;os"
     name "Avenida Central"
+    name "Rua dos Ch&#227;os"
     length 272.98
     traffic 1
     blocked 0
@@ -38662,8 +38662,8 @@ graph [
   edge [
     source 149
     target 4228
-    name "Rua do Caires"
     name "Avenida Conde Dom Henrique"
+    name "Rua do Caires"
     length 251.956
     traffic 1
     blocked 0
@@ -38679,8 +38679,8 @@ graph [
   edge [
     source 149
     target 5169
-    name "Rua Cidade do Porto"
     name "Avenida Conde Dom Henrique"
+    name "Rua Cidade do Porto"
     length 289.812
     traffic 1
     blocked 0
@@ -38688,8 +38688,8 @@ graph [
   edge [
     source 150
     target 2908
-    name "Rua Cidade do Porto"
     name "Avenida Imaculada Concei&#231;&#227;o"
+    name "Rua Cidade do Porto"
     length 280.196
     traffic 1
     blocked 0
@@ -43083,8 +43083,8 @@ graph [
   edge [
     source 440
     target 442
-    name "Largo Carlos Amarante"
     name "Largo de Santa Cruz"
+    name "Largo Carlos Amarante"
     length 93.427
     traffic 1
     blocked 0
@@ -43438,8 +43438,8 @@ graph [
   edge [
     source 464
     target 2326
-    name "Largo de S&#227;o Paulo"
     name "Rua Dom Gon&#231;alo Pereira"
+    name "Largo de S&#227;o Paulo"
     length 144.044
     traffic 1
     blocked 0
@@ -44351,8 +44351,8 @@ graph [
   edge [
     source 522
     target 1862
-    name "Rua do Areal"
     name "Rua Areal de Baixo"
+    name "Rua do Areal"
     length 182.427
     traffic 1
     blocked 0
@@ -44897,8 +44897,8 @@ graph [
   edge [
     source 563
     target 4391
-    name "Rua do Sardoal"
     name "Rua da Regueira"
+    name "Rua do Sardoal"
     length 136.441
     traffic 1
     blocked 0
@@ -45114,8 +45114,8 @@ graph [
   edge [
     source 580
     target 5246
-    name "Rua da Bou&#231;a"
     name "Rua do Pinheiro Manso"
+    name "Rua da Bou&#231;a"
     length 89.412
     traffic 1
     blocked 0
@@ -45395,8 +45395,8 @@ graph [
   edge [
     source 600
     target 3201
-    name "Rua de S&#227;o Paulo"
     name "Rua de Santiago"
+    name "Rua de S&#227;o Paulo"
     length 102.624
     traffic 1
     blocked 0
@@ -45781,8 +45781,8 @@ graph [
   edge [
     source 625
     target 634
-    name "Rua de Luis"
     name "Rua do Xisto"
+    name "Rua de Luis"
     length 132.058
     traffic 1
     blocked 0
@@ -45982,8 +45982,8 @@ graph [
   edge [
     source 636
     target 749
-    name "Rua Padre Manuel Alaio"
     name "Rua do Conservat&#243;rio"
+    name "Rua Padre Manuel Alaio"
     length 283.247
     traffic 1
     blocked 0
@@ -46007,8 +46007,8 @@ graph [
   edge [
     source 637
     target 749
-    name "Rua Adelina Caravana"
     name "Rua do Conservat&#243;rio"
+    name "Rua Adelina Caravana"
     length 122.66
     traffic 1
     blocked 0
@@ -46200,8 +46200,8 @@ graph [
   edge [
     source 649
     target 3420
-    name "Rua Rodrigo Gon&#231;alves da Costa"
     name "Rua do Nogueirense"
+    name "Rua Rodrigo Gon&#231;alves da Costa"
     length 187.027
     traffic 1
     blocked 0
@@ -46209,8 +46209,8 @@ graph [
   edge [
     source 650
     target 4149
-    name "Rua C&#243;nego Rafael Alvares Costa"
     name "Rua Jo&#227;o Beltr&#227;o"
+    name "Rua C&#243;nego Rafael Alvares Costa"
     length 83.511
     traffic 1
     blocked 0
@@ -46907,8 +46907,8 @@ graph [
   edge [
     source 695
     target 2971
-    name "Rua de Rebanhos"
     name "Rua das Nogueiras"
+    name "Rua de Rebanhos"
     length 378.491
     traffic 1
     blocked 0
@@ -47004,8 +47004,8 @@ graph [
   edge [
     source 702
     target 2971
-    name "Rua de Rebanhos"
     name "Rua dos Padres Carmelitas"
+    name "Rua de Rebanhos"
     length 368.932
     traffic 1
     blocked 0
@@ -48391,8 +48391,8 @@ graph [
   edge [
     source 801
     target 825
-    name "Rua das T&#237;lias"
     name "Rua de S&#227;o Sebasti&#227;o"
+    name "Rua das T&#237;lias"
     length 240.751
     traffic 1
     blocked 0
@@ -48553,8 +48553,8 @@ graph [
   edge [
     source 809
     target 4323
-    name "Rua do Pinheirinho"
     name "Rua de Vilarinho"
+    name "Rua do Pinheirinho"
     length 299.994
     traffic 1
     blocked 0
@@ -49468,8 +49468,8 @@ graph [
   edge [
     source 895
     target 4224
-    name "Rua Jo&#227;o Cruz"
     name "Pra&#231;a Fl&#225;vio S&#225; Leite"
+    name "Rua Jo&#227;o Cruz"
     length 139.883
     traffic 1
     blocked 0
@@ -50680,8 +50680,8 @@ graph [
   edge [
     source 958
     target 1058
-    name "Avenida Senhor dos Aflitos"
     name "Rua do Pal&#225;cio"
+    name "Avenida Senhor dos Aflitos"
     length 113.722
     traffic 1
     blocked 0
@@ -50697,8 +50697,8 @@ graph [
   edge [
     source 959
     target 960
-    name "Rua da Barroca"
     name "Rua da Varziela"
+    name "Rua da Barroca"
     length 399.299
     traffic 1
     blocked 0
@@ -50706,8 +50706,8 @@ graph [
   edge [
     source 959
     target 967
-    name "Rua da Varziela"
     name "Rua da Devesa"
+    name "Rua da Varziela"
     length 211.414
     traffic 1
     blocked 0
@@ -52103,8 +52103,8 @@ graph [
   edge [
     source 1055
     target 4273
-    name "Rua do Souto"
     name "Rua de S&#225;"
+    name "Rua do Souto"
     length 362.338
     traffic 1
     blocked 0
@@ -52176,8 +52176,8 @@ graph [
   edge [
     source 1062
     target 1066
-    name "Rua Jos&#233; Duarte"
     name "Rua do Outeiro"
+    name "Rua Jos&#233; Duarte"
     length 198.028
     traffic 1
     blocked 0
@@ -56240,8 +56240,8 @@ graph [
   edge [
     source 1385
     target 1390
-    name "Rua da Igreja"
     name "Rua do Pinheiro"
+    name "Rua da Igreja"
     length 202.124
     traffic 1
     blocked 0
@@ -56297,8 +56297,8 @@ graph [
   edge [
     source 1394
     target 2661
-    name "Rua da Igreja Velha"
     name "Rua Igreja Velha"
+    name "Rua da Igreja Velha"
     length 187.917
     traffic 1
     blocked 0
@@ -57269,8 +57269,8 @@ graph [
   edge [
     source 1484
     target 5489
-    name "Rua Senhora do Bom Sucesso"
     name "Rua das Grovas"
+    name "Rua Senhora do Bom Sucesso"
     length 291.405
     traffic 1
     blocked 0
@@ -57462,8 +57462,8 @@ graph [
   edge [
     source 1507
     target 4598
-    name "Rua da Carvalheira"
     name "Rua de Pitancinhos"
+    name "Rua da Carvalheira"
     length 241.727
     traffic 1
     blocked 0
@@ -57847,8 +57847,8 @@ graph [
   edge [
     source 1528
     target 2961
-    name "Rua Dr. Manuel Jos&#233; de Oliveira Machado"
     name "Rua Doutor Manuel Jos&#233; de Oliveira Machado"
+    name "Rua Dr. Manuel Jos&#233; de Oliveira Machado"
     length 127.555
     traffic 1
     blocked 0
@@ -58491,8 +58491,8 @@ graph [
   edge [
     source 1580
     target 5411
-    name "Rua do Cordeiro"
     name "Rua Jos&#233; Silva Braga"
+    name "Rua do Cordeiro"
     length 188.276
     traffic 1
     blocked 0
@@ -58838,8 +58838,8 @@ graph [
     source 1607
     target 1615
     name "Rua Gra&#231;a J&#250;nior"
-    name "Rua Dias Silva"
     name "Rua Gon&#231;alves Braga"
+    name "Rua Dias Silva"
     length 121.605
     traffic 1
     blocked 0
@@ -59384,8 +59384,8 @@ graph [
   edge [
     source 1650
     target 1655
-    name "Rua Jo&#227;o Pereira Neto"
     name "Rua Doutor S&#233;rgio Silva Pinto"
+    name "Rua Jo&#227;o Pereira Neto"
     length 165.075
     traffic 1
     blocked 0
@@ -60122,8 +60122,8 @@ graph [
   edge [
     source 1708
     target 1808
-    name "Largo da Devesa"
     name "Rua de Santo Adri&#227;o"
+    name "Largo da Devesa"
     length 69.768
     traffic 1
     blocked 0
@@ -60300,8 +60300,8 @@ graph [
   edge [
     source 1728
     target 4345
-    name "Travessa Augusto Veloso"
     name "Rua Dom Ant&#243;nio Costa"
+    name "Travessa Augusto Veloso"
     length 254.21
     traffic 1
     blocked 0
@@ -60341,8 +60341,8 @@ graph [
   edge [
     source 1731
     target 2434
-    name "Rua Augusto Veloso"
     name "Rua An&#237;bal Mendon&#231;a"
+    name "Rua Augusto Veloso"
     length 126.184
     traffic 1
     blocked 0
@@ -61479,8 +61479,8 @@ graph [
   edge [
     source 1829
     target 2478
-    name "Travessa do Outeiral"
     name "Rua Ces&#225;rio Verde"
+    name "Travessa do Outeiral"
     length 73.678
     traffic 1
     blocked 0
@@ -61761,8 +61761,8 @@ graph [
   edge [
     source 1850
     target 1853
-    name "Rua Ant&#243;nio Fernandes de Ara&#250;jo"
     name "Rua Arcebispo Dom Francisco Maria da Silva"
+    name "Rua Ant&#243;nio Fernandes de Ara&#250;jo"
     length 93.91
     traffic 1
     blocked 0
@@ -62580,8 +62580,8 @@ graph [
   edge [
     source 1925
     target 2314
-    name "Rua Feliciano Ramos"
     name "Rua das Pocinhas"
+    name "Rua Feliciano Ramos"
     length 282.457
     traffic 1
     blocked 0
@@ -64598,8 +64598,8 @@ graph [
   edge [
     source 2102
     target 2104
-    name "Rua do Bonfim"
     name "Rua da Cangosta"
+    name "Rua do Bonfim"
     length 499.262
     traffic 1
     blocked 0
@@ -64873,8 +64873,8 @@ graph [
   edge [
     source 2126
     target 2466
-    name "Rua de S&#227;o Bentinho"
     name "Rua dos Falc&#245;es"
+    name "Rua de S&#227;o Bentinho"
     length 159.25
     traffic 1
     blocked 0
@@ -65178,8 +65178,8 @@ graph [
   edge [
     source 2149
     target 2150
-    name "Rua das Pontezinhas"
     name "Rua da Boucinha"
+    name "Rua das Pontezinhas"
     length 118.002
     traffic 1
     blocked 0
@@ -65443,8 +65443,8 @@ graph [
   edge [
     source 2162
     target 4905
-    name "Travessa do Esp&#237;rito Santo"
     name "Rua Padre Jos&#233; G. Eigenmann"
+    name "Travessa do Esp&#237;rito Santo"
     length 104.072
     traffic 1
     blocked 0
@@ -65692,8 +65692,8 @@ graph [
   edge [
     source 2176
     target 3257
-    name "Avenida da Independ&#234;ncia"
     name "Avenida de S&#227;o Tiago"
+    name "Avenida da Independ&#234;ncia"
     length 315.304
     traffic 1
     blocked 0
@@ -65717,8 +65717,8 @@ graph [
   edge [
     source 2178
     target 2180
-    name "Rua dos Prados"
     name "Travessa Terminal de Mercadorias"
+    name "Rua dos Prados"
     length 126.831
     traffic 1
     blocked 0
@@ -66022,8 +66022,8 @@ graph [
   edge [
     source 2202
     target 4990
-    name "Travessa do Feital"
     name "Rua 5 de Outubro"
+    name "Travessa do Feital"
     length 355.612
     traffic 1
     blocked 0
@@ -68732,8 +68732,8 @@ graph [
   edge [
     source 2493
     target 2495
-    name "Rua da Igreja Velha"
     name "Rua da Torre"
+    name "Rua da Igreja Velha"
     length 220.967
     traffic 1
     blocked 0
@@ -69229,8 +69229,8 @@ graph [
   edge [
     source 2550
     target 5762
-    name "Rua Pinheiro do Bicho"
     name "Avenida do Redondelo"
+    name "Rua Pinheiro do Bicho"
     length 154.048
     traffic 1
     blocked 0
@@ -69623,8 +69623,8 @@ graph [
   edge [
     source 2591
     target 5029
-    name "Circular Norte de Braga"
     name "Avenida Ant&#243;nio Macedo"
+    name "Circular Norte de Braga"
     length 832.874
     traffic 1
     blocked 0
@@ -69664,8 +69664,8 @@ graph [
   edge [
     source 2598
     target 2600
-    name "Travessa Pe&#227;o da Meia Laranja"
     name "Rua Gualdino Correia"
+    name "Travessa Pe&#227;o da Meia Laranja"
     length 104.642
     traffic 1
     blocked 0
@@ -70641,9 +70641,9 @@ graph [
   edge [
     source 2693
     target 2960
-    name "Rua Luis Ant&#243;nio Verney"
-    name "Rua Gil Vicente"
     name "Travessa Gil Vicente"
+    name "Rua Gil Vicente"
+    name "Rua Luis Ant&#243;nio Verney"
     length 97.35
     traffic 1
     blocked 0
@@ -71035,8 +71035,8 @@ graph [
   edge [
     source 2730
     target 3538
-    name "Rua do Fujacal"
     name "Rua Conselheiro Lobato"
+    name "Rua do Fujacal"
     length 22.806
     traffic 1
     blocked 0
@@ -72821,8 +72821,8 @@ graph [
   edge [
     source 2895
     target 4119
-    name "Rua do Raio"
     name "Largo da Senhora-a-Branca"
+    name "Rua do Raio"
     length 191.736
     traffic 1
     blocked 0
@@ -72926,8 +72926,8 @@ graph [
   edge [
     source 2911
     target 4013
-    name "Rua do Caires"
     name "Avenida Conde Dom Henrique"
+    name "Rua do Caires"
     length 277.605
     traffic 1
     blocked 0
@@ -76863,8 +76863,8 @@ graph [
   edge [
     source 3330
     target 3339
-    name "Rua Ant&#243;nio Gon&#231;alves Braga"
     name "Rua das Cam&#233;lias"
+    name "Rua Ant&#243;nio Gon&#231;alves Braga"
     length 227.561
     traffic 1
     blocked 0
@@ -77345,8 +77345,8 @@ graph [
   edge [
     source 3380
     target 3381
-    name "Rua C&#243;nego Avelino Jesus Costa"
     name "Rua Doutor Francisco Jos&#233; Sousa Gomes"
+    name "Rua C&#243;nego Avelino Jesus Costa"
     length 75.491
     traffic 1
     blocked 0
@@ -78549,8 +78549,8 @@ graph [
   edge [
     source 3528
     target 4153
-    name "Rua de Entre Campos"
     name "Rua da Capela"
+    name "Rua de Entre Campos"
     length 560.443
     traffic 1
     blocked 0
@@ -79351,8 +79351,8 @@ graph [
   edge [
     source 3622
     target 5608
-    name "Cal&#231;ada da Igreja"
     name "Largo Padre Borralheiro"
+    name "Cal&#231;ada da Igreja"
     length 124.723
     traffic 1
     blocked 0
@@ -80329,8 +80329,8 @@ graph [
   edge [
     source 3728
     target 3730
-    name "Rua do Sobrado"
     name "Rua do C&#244;vo"
+    name "Rua do Sobrado"
     length 300.717
     traffic 1
     blocked 0
@@ -80410,8 +80410,8 @@ graph [
   edge [
     source 3740
     target 4544
-    name "Rua Melhorado de Baixo"
     name "Rua da Senhora do &#211;"
+    name "Rua Melhorado de Baixo"
     length 330.607
     traffic 1
     blocked 0
@@ -80587,8 +80587,8 @@ graph [
   edge [
     source 3755
     target 5910
-    name "Rua Quinta Velha"
     name "Rua da Quinta Velha"
+    name "Rua Quinta Velha"
     length 539.314
     traffic 1
     blocked 0
@@ -81670,8 +81670,8 @@ graph [
   edge [
     source 3864
     target 4159
-    name "Rua da Escola"
     name "Rua da Serra"
+    name "Rua da Escola"
     length 1067.537
     traffic 1
     blocked 0
@@ -82847,8 +82847,8 @@ graph [
   edge [
     source 3962
     target 3965
-    name "Rua de Mariz"
     name "Rua de Padim"
+    name "Rua de Mariz"
     length 168.757
     traffic 1
     blocked 0
@@ -83224,8 +83224,8 @@ graph [
   edge [
     source 3991
     target 3994
-    name "Rua do Sarrido"
     name "Rua da Paradela"
+    name "Rua do Sarrido"
     length 199.817
     traffic 1
     blocked 0
@@ -83929,8 +83929,8 @@ graph [
   edge [
     source 4055
     target 4304
-    name "Rua dos Moleiros"
     name "Rua do Pinheiro"
+    name "Rua dos Moleiros"
     length 455.572
     traffic 1
     blocked 0
@@ -85420,8 +85420,8 @@ graph [
   edge [
     source 4198
     target 4217
-    name "Rua das Barreiras"
     name "Rua de Carcavelos"
+    name "Rua das Barreiras"
     length 523.828
     traffic 1
     blocked 0
@@ -85462,8 +85462,8 @@ graph [
   edge [
     source 4200
     target 4212
-    name "Rua das Fonta&#237;nhas"
     name "Rua de S&#227;o Vicente"
+    name "Rua das Fonta&#237;nhas"
     length 328.999
     traffic 1
     blocked 0
@@ -85511,8 +85511,8 @@ graph [
   edge [
     source 4203
     target 5768
-    name "Largo da Lage"
     name "Rua do Pinheiro"
+    name "Largo da Lage"
     length 73.678
     traffic 1
     blocked 0
@@ -87248,8 +87248,8 @@ graph [
   edge [
     source 4436
     target 4437
-    name "Rua Joaquim Gomes da Cunha"
     name "Rua Ant&#243;nio Jos&#233; Ribeiro"
+    name "Rua Joaquim Gomes da Cunha"
     length 202.876
     traffic 1
     blocked 0
@@ -87522,8 +87522,8 @@ graph [
   edge [
     source 4470
     target 4471
-    name "Rua do Estremo"
     name "Rua do Extremo"
+    name "Rua do Estremo"
     length 221.656
     traffic 1
     blocked 0
@@ -87651,8 +87651,8 @@ graph [
   edge [
     source 4484
     target 4488
-    name "Rua 1&#186; de Dezembro"
     name "Rua dos Poveiros"
+    name "Rua 1&#186; de Dezembro"
     length 191.489
     traffic 1
     blocked 0
@@ -87908,8 +87908,8 @@ graph [
   edge [
     source 4521
     target 5357
-    name "Largo de Sobremoure"
     name "Caminho da Ponte de Sobremoure"
+    name "Largo de Sobremoure"
     length 320.824
     traffic 1
     blocked 0
@@ -88198,8 +88198,8 @@ graph [
   edge [
     source 4562
     target 5601
-    name "Travessa Espessande"
     name "Cangosta do Jogo da Bola"
+    name "Travessa Espessande"
     length 134.465
     traffic 1
     blocked 0
@@ -88207,8 +88207,8 @@ graph [
   edge [
     source 4563
     target 4569
-    name "Rua Senhor das Travessas"
     name "Rua da Goja"
+    name "Rua Senhor das Travessas"
     length 508.931
     traffic 1
     blocked 0
@@ -91751,8 +91751,8 @@ graph [
   edge [
     source 5128
     target 5682
-    name "Rua Jos&#233; Fernandes Ferreira"
     name "Travessa Jo&#227;o Marqu&#234;s da Cruz"
+    name "Rua Jos&#233; Fernandes Ferreira"
     length 104.676
     traffic 1
     blocked 0
@@ -92080,8 +92080,8 @@ graph [
   edge [
     source 5214
     target 5217
-    name "Rua da Estrada Velha"
     name "Rua do Belido de Cima"
+    name "Rua da Estrada Velha"
     length 143.82
     traffic 1
     blocked 0
@@ -93802,8 +93802,8 @@ graph [
   edge [
     source 5661
     target 5663
-    name "Largo do Porto de Martim"
     name "Rua Porto de Martim"
+    name "Largo do Porto de Martim"
     length 66.095
     traffic 1
     blocked 0
@@ -94195,8 +94195,8 @@ graph [
   edge [
     source 5755
     target 5759
-    name "Rua da Lamela"
     name "Rua do Sobrado"
+    name "Rua da Lamela"
     length 520.85
     traffic 1
     blocked 0
@@ -94244,8 +94244,8 @@ graph [
   edge [
     source 5768
     target 5769
-    name "Largo da Lage"
     name "Rua das Penas"
+    name "Largo da Lage"
     length 31.52
     traffic 1
     blocked 0

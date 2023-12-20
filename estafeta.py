@@ -2,9 +2,9 @@ from enum import Enum
 
 
 class Vehicle(Enum):
-    CAR = {"type": 1, "speed": 50, "max_weight": 100}
-    BIKE = {"type": 2, "speed": 35, "max_weight": 20}
-    BICYCLE = {"type": 3, "speed": 10, "max_weight": 5}
+    CAR = {"type": 1, "speed": 50, "max_weight": 100, "radius": 200}
+    BIKE = {"type": 2, "speed": 35, "max_weight": 20, "radius": 150}
+    BICYCLE = {"type": 3, "speed": 10, "max_weight": 5, "radius": 75}
 
 
 class Estafeta:
