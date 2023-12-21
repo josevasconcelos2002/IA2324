@@ -66,10 +66,17 @@ r = route(estafetas, s, dijkstra, g)
 
 print("VOU COMECAR AS MERDAS PESADAS MEU")
 
-list_nodes = [int(encomenda.destination[0]) for encomenda in r[0]]
+list_nodes = [encomenda.destination[0] for encomenda in r[0]]
+"""
+new_g = ox.graph_from_place('Braga, Braga', network_type="drive")
 
-g = ox.graph_from_place('Braga, Braga', network_type="drive")
+node_rename_mapping = {old_node: str(new_node) for new_node, old_node in enumerate(new_g.nodes, start=1)}
+g_un = nx.relabel_nodes(new_g, node_rename_mapping)
+"""
+print(list_nodes)
 
+ox.plot.plot_graph_route(g, list_nodes)
+"""
 # Mudar o nome (identificação) dos nodos para conveniência de utilização apenas
 # Inicialmente vêm com um número grande (osmid) como identificador. Aqui são numerados por ordem crescente
 nodes, edges = ox.graph_to_gdfs(g)
@@ -80,3 +87,4 @@ g_un = nx.relabel_nodes(g, node_rename_mapping)
 _, ax = ox.plot_graph(ox.project_graph(g_un), show=False, close=False)
 nx.draw_networkx_nodes(g_un, pos=ox.graph_to_gdfs(g_un, edges=False).geometry.to_dict(), nodelist=list_nodes,
                        node_color='red', ax=ax)
+"""
