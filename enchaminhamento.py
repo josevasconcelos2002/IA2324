@@ -188,4 +188,4 @@ def calculate_delivery_time(path, vehicle, weight, graph):
     return total_time
 
 def aux_get(x):
-    return next(iter(x.items()))[1]
+    return list(x.values())[0]
