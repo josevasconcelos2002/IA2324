@@ -1,6 +1,6 @@
 graph [
   multigraph 1
-  created_date "2023-12-23 09:35:58"
+  created_date "2023-12-23 10:18:57"
   created_with "OSMnx 1.8.0"
   crs "epsg:4326"
   simplified 1
@@ -32280,7 +32280,7 @@ graph [
   ]
   node [
     id 5379
-    label "5379"
+label "ORIGIN"
     y 41.5427133
     x -8.432212
   ]
@@ -36191,8 +36191,8 @@ graph [
     source 3
     target 646
     key 0
-    name "Avenida Francisco Salgado Zenha"
     name "Avenida Miguel Torga"
+    name "Avenida Francisco Salgado Zenha"
     length 228.216
     traffic 1
     blocked 0
@@ -37151,8 +37151,8 @@ graph [
     source 50
     target 229
     key 0
-    name "Avenida Frei Bartolomeu dos M&#225;rtires"
     name "Rua Frei Bartolomeu dos M&#225;rtires"
+    name "Avenida Frei Bartolomeu dos M&#225;rtires"
     length 269.962
     traffic 1
     blocked 0
@@ -37161,8 +37161,8 @@ graph [
     source 51
     target 2062
     key 0
-    name "Avenida Frei Bartolomeu dos M&#225;rtires"
     name "Rua Frei Bartolomeu dos M&#225;rtires"
+    name "Avenida Frei Bartolomeu dos M&#225;rtires"
     length 226.227
     traffic 1
     blocked 0
@@ -37234,8 +37234,8 @@ graph [
     source 55
     target 5160
     key 0
-    name "Avenida Jo&#227;o Paulo II"
     name "Avenida General Carrilho da Silva Pinto"
+    name "Avenida Jo&#227;o Paulo II"
     length 429.921
     traffic 1
     blocked 0
@@ -37298,8 +37298,8 @@ graph [
     source 58
     target 211
     key 0
-    name "Avenida Jo&#227;o Paulo II"
     name "Avenida General Carrilho da Silva Pinto"
+    name "Avenida Jo&#227;o Paulo II"
     length 428.996
     traffic 1
     blocked 0
@@ -38265,8 +38265,8 @@ graph [
     source 112
     target 3281
     key 0
-    name "Pra&#231;a Alexandre Herculano"
     name "Avenida General Norton de Matos"
+    name "Pra&#231;a Alexandre Herculano"
     length 119.216
     traffic 1
     blocked 0
@@ -38717,8 +38717,8 @@ graph [
     source 132
     target 5167
     key 0
-    name "Circular Sul de Braga"
     name "Avenida Miguel Torga"
+    name "Circular Sul de Braga"
     length 1038.944
     traffic 1
     blocked 0
@@ -39006,8 +39006,8 @@ graph [
     source 149
     target 4229
     key 0
-    name "Avenida Conde Dom Henrique"
     name "Rua do Caires"
+    name "Avenida Conde Dom Henrique"
     length 251.956
     traffic 1
     blocked 0
@@ -39025,8 +39025,8 @@ graph [
     source 149
     target 5170
     key 0
-    name "Avenida Conde Dom Henrique"
     name "Rua Cidade do Porto"
+    name "Avenida Conde Dom Henrique"
     length 289.812
     traffic 1
     blocked 0
@@ -44405,8 +44405,8 @@ graph [
     source 465
     target 2327
     key 0
-    name "Largo de S&#227;o Paulo"
     name "Rua Dom Gon&#231;alo Pereira"
+    name "Largo de S&#227;o Paulo"
     length 144.044
     traffic 1
     blocked 0
@@ -46299,8 +46299,8 @@ graph [
     source 581
     target 5247
     key 1
-    name "Rua da Bou&#231;a"
     name "Rua do Pinheiro Manso"
+    name "Rua da Bou&#231;a"
     length 89.412
     traffic 1
     blocked 0
@@ -46615,8 +46615,8 @@ graph [
     source 601
     target 3202
     key 0
-    name "Rua de Santiago"
     name "Rua de S&#227;o Paulo"
+    name "Rua de Santiago"
     length 102.624
     traffic 1
     blocked 0
@@ -47003,8 +47003,8 @@ graph [
     source 624
     target 3749
     key 0
-    name "Rua da Igreja"
     name "Estrada de S&#227;o Pedro"
+    name "Rua da Igreja"
     length 117.388
     traffic 1
     blocked 0
@@ -47049,8 +47049,8 @@ graph [
     source 626
     target 635
     key 0
-    name "Rua do Xisto"
     name "Rua de Luis"
+    name "Rua do Xisto"
     length 132.058
     traffic 1
     blocked 0
@@ -47275,8 +47275,8 @@ graph [
     source 637
     target 750
     key 0
-    name "Rua Padre Manuel Alaio"
     name "Rua do Conservat&#243;rio"
+    name "Rua Padre Manuel Alaio"
     length 283.247
     traffic 1
     blocked 0
@@ -47303,8 +47303,8 @@ graph [
     source 638
     target 750
     key 0
-    name "Rua Adelina Caravana"
     name "Rua do Conservat&#243;rio"
+    name "Rua Adelina Caravana"
     length 122.66
     traffic 1
     blocked 0
@@ -47530,8 +47530,8 @@ graph [
     source 651
     target 4150
     key 0
-    name "Rua Jo&#227;o Beltr&#227;o"
     name "Rua C&#243;nego Rafael Alvares Costa"
+    name "Rua Jo&#227;o Beltr&#227;o"
     length 83.511
     traffic 1
     blocked 0
@@ -47585,8 +47585,8 @@ graph [
     source 653
     target 659
     key 0
-    name "Rua Dom Jorge Costa"
     name "Rua C&#243;nego Rafael Alvares Costa"
+    name "Rua Dom Jorge Costa"
     length 100.134
     traffic 1
     blocked 0
@@ -48803,8 +48803,8 @@ graph [
     source 729
     target 1143
     key 0
-    name "Rua Moura Coutinho"
     name "Rua Lopes Gon&#231;alves"
+    name "Rua Moura Coutinho"
     length 167.078
     traffic 1
     blocked 0
@@ -50174,8 +50174,8 @@ graph [
     source 809
     target 885
     key 0
-    name "Rua da Japoneira"
     name "Rua do Poente"
+    name "Rua da Japoneira"
     length 131.376
     traffic 1
     blocked 0
@@ -50193,8 +50193,8 @@ graph [
     source 810
     target 4324
     key 0
-    name "Rua do Pinheirinho"
     name "Rua de Vilarinho"
+    name "Rua do Pinheirinho"
     length 299.994
     traffic 1
     blocked 0
@@ -51222,8 +51222,8 @@ graph [
     source 896
     target 4225
     key 0
-    name "Rua Jo&#227;o Cruz"
     name "Pra&#231;a Fl&#225;vio S&#225; Leite"
+    name "Rua Jo&#227;o Cruz"
     length 139.883
     traffic 1
     blocked 0
@@ -52448,9 +52448,9 @@ graph [
     source 953
     target 4193
     key 0
-    name "Avenida Nacional"
-    name "Avenida Padre Manuel da Costa Rego"
     name "Avenida da Granja"
+    name "Avenida Padre Manuel da Costa Rego"
+    name "Avenida Nacional"
     length 324.899
     traffic 1
     blocked 0
@@ -52585,8 +52585,8 @@ graph [
     source 959
     target 1059
     key 0
-    name "Rua do Pal&#225;cio"
     name "Avenida Senhor dos Aflitos"
+    name "Rua do Pal&#225;cio"
     length 113.722
     traffic 1
     blocked 0
@@ -52604,8 +52604,8 @@ graph [
     source 960
     target 961
     key 0
-    name "Rua da Barroca"
     name "Rua da Varziela"
+    name "Rua da Barroca"
     length 399.299
     traffic 1
     blocked 0
@@ -52614,8 +52614,8 @@ graph [
     source 960
     target 968
     key 0
-    name "Rua da Devesa"
     name "Rua da Varziela"
+    name "Rua da Devesa"
     length 211.414
     traffic 1
     blocked 0
@@ -53733,8 +53733,8 @@ graph [
     source 1022
     target 5910
     key 0
-    name "Rua Frei Cipriano da Cruz"
     name "Rua Marceliano Ara&#250;jo"
+    name "Rua Frei Cipriano da Cruz"
     length 128.154
     traffic 1
     blocked 0
@@ -54267,8 +54267,8 @@ graph [
     source 1063
     target 1067
     key 0
-    name "Rua do Outeiro"
     name "Rua Jos&#233; Duarte"
+    name "Rua do Outeiro"
     length 198.028
     traffic 1
     blocked 0
@@ -55493,8 +55493,8 @@ graph [
     source 1148
     target 1158
     key 0
-    name "Rua da Boavista"
     name "Rua Bemposta"
+    name "Rua da Boavista"
     length 267.149
     traffic 1
     blocked 0
@@ -58892,8 +58892,8 @@ graph [
     source 1386
     target 1391
     key 0
-    name "Rua da Igreja"
     name "Rua do Pinheiro"
+    name "Rua da Igreja"
     length 202.124
     traffic 1
     blocked 0
@@ -59002,8 +59002,8 @@ graph [
     source 1397
     target 3108
     key 0
-    name "Rua Jos&#233; Maria Rodrigues"
     name "Rua Celestino Lobo"
+    name "Rua Jos&#233; Maria Rodrigues"
     length 210.082
     traffic 1
     blocked 0
@@ -59580,8 +59580,8 @@ graph [
     source 1432
     target 1441
     key 0
-    name "Largo das Alminhas"
     name "Cal&#231;ada de Cones"
+    name "Largo das Alminhas"
     length 112.727
     traffic 1
     blocked 0
@@ -60059,9 +60059,9 @@ graph [
     source 1485
     target 1488
     key 0
-    name "Travessa das Grovas"
-    name "Rua Primavera"
     name "Rua Santa Maria"
+    name "Rua Primavera"
+    name "Travessa das Grovas"
     length 61.775
     traffic 1
     blocked 0
@@ -60710,8 +60710,8 @@ graph [
     source 1529
     target 2962
     key 0
-    name "Rua Dr. Manuel Jos&#233; de Oliveira Machado"
     name "Rua Doutor Manuel Jos&#233; de Oliveira Machado"
+    name "Rua Dr. Manuel Jos&#233; de Oliveira Machado"
     length 127.555
     traffic 1
     blocked 0
@@ -61361,8 +61361,8 @@ graph [
     source 1574
     target 5364
     key 0
-    name "Rua Jos&#233; Silva Braga"
     name "Largo de Sobremure"
+    name "Rua Jos&#233; Silva Braga"
     length 306.053
     traffic 1
     blocked 0
@@ -61443,8 +61443,8 @@ graph [
     source 1581
     target 5412
     key 0
-    name "Rua Jos&#233; Silva Braga"
     name "Rua do Cordeiro"
+    name "Rua Jos&#233; Silva Braga"
     length 188.276
     traffic 1
     blocked 0
@@ -61768,8 +61768,8 @@ graph [
     source 1604
     target 3583
     key 0
-    name "Rua Dom Francisco de Noronha"
     name "Rua Abade Loureira"
+    name "Rua Dom Francisco de Noronha"
     length 52.198
     traffic 1
     blocked 0
@@ -61850,9 +61850,9 @@ graph [
     source 1608
     target 1616
     key 1
+    name "Rua Gon&#231;alves Braga"
     name "Rua Gra&#231;a J&#250;nior"
     name "Rua Dias Silva"
-    name "Rua Gon&#231;alves Braga"
     length 121.605
     traffic 1
     blocked 0
@@ -63304,8 +63304,8 @@ graph [
     source 1709
     target 1809
     key 0
-    name "Rua de Santo Adri&#227;o"
     name "Largo da Devesa"
+    name "Rua de Santo Adri&#227;o"
     length 69.768
     traffic 1
     blocked 0
@@ -63504,8 +63504,8 @@ graph [
     source 1729
     target 4346
     key 0
-    name "Rua Dom Ant&#243;nio Costa"
     name "Travessa Augusto Veloso"
+    name "Rua Dom Ant&#243;nio Costa"
     length 254.21
     traffic 1
     blocked 0
@@ -63550,8 +63550,8 @@ graph [
     source 1732
     target 2435
     key 0
-    name "Rua Augusto Veloso"
     name "Rua An&#237;bal Mendon&#231;a"
+    name "Rua Augusto Veloso"
     length 126.184
     traffic 1
     blocked 0
@@ -64181,8 +64181,8 @@ graph [
     source 1778
     target 2206
     key 0
-    name "Rua da Boavista"
     name "Rua Irm&#227;os Roby"
+    name "Rua da Boavista"
     length 67.63
     traffic 1
     blocked 0
@@ -65301,8 +65301,8 @@ graph [
     source 1860
     target 1865
     key 1
-    name "Rua Nuno Amorim"
     name "Rua C&#226;ndido de Sousa"
+    name "Rua Nuno Amorim"
     length 65.487
     traffic 1
     blocked 0
@@ -65734,8 +65734,8 @@ graph [
     source 1903
     target 5250
     key 0
-    name "Rua de Vila Nova"
     name "Rua da Quinta das Mouras"
+    name "Rua de Vila Nova"
     length 160.554
     traffic 1
     blocked 0
@@ -66113,8 +66113,8 @@ graph [
     source 1926
     target 2315
     key 0
-    name "Rua das Pocinhas"
     name "Rua Feliciano Ramos"
+    name "Rua das Pocinhas"
     length 282.457
     traffic 1
     blocked 0
@@ -67779,8 +67779,8 @@ graph [
     source 2061
     target 2145
     key 0
-    name "Rua do Meirinho"
     name "Rua da Ma&#237;nha"
+    name "Rua do Meirinho"
     length 357.116
     traffic 1
     blocked 0
@@ -68401,8 +68401,8 @@ graph [
     source 2103
     target 2105
     key 0
-    name "Rua da Cangosta"
     name "Rua do Bonfim"
+    name "Rua da Cangosta"
     length 499.262
     traffic 1
     blocked 0
@@ -68710,8 +68710,8 @@ graph [
     source 2127
     target 2467
     key 0
-    name "Rua de S&#227;o Bentinho"
     name "Rua dos Falc&#245;es"
+    name "Rua de S&#227;o Bentinho"
     length 159.25
     traffic 1
     blocked 0
@@ -69369,8 +69369,8 @@ graph [
     source 2163
     target 4906
     key 0
-    name "Travessa do Esp&#237;rito Santo"
     name "Rua Padre Jos&#233; G. Eigenmann"
+    name "Travessa do Esp&#237;rito Santo"
     length 104.072
     traffic 1
     blocked 0
@@ -70029,8 +70029,8 @@ graph [
     source 2203
     target 4991
     key 0
-    name "Travessa do Feital"
     name "Rua 5 de Outubro"
+    name "Travessa do Feital"
     length 355.612
     traffic 1
     blocked 0
@@ -70849,8 +70849,8 @@ graph [
     source 2277
     target 2966
     key 0
-    name "Circular Sul de Braga"
     name "Avenida Miguel Torga"
+    name "Circular Sul de Braga"
     length 1032.169
     traffic 1
     blocked 0
@@ -71498,8 +71498,8 @@ graph [
     source 2354
     target 5637
     key 0
-    name "Rua do Pinheiro"
     name "Rua Jaime Sotto Mayor"
+    name "Rua do Pinheiro"
     length 78.205
     traffic 1
     blocked 0
@@ -72878,8 +72878,8 @@ graph [
     source 2463
     target 3129
     key 0
-    name "Rua do Parque Comercial"
     name "Rua das Regadinhas"
+    name "Rua do Parque Comercial"
     length 335.661
     traffic 1
     blocked 0
@@ -73681,8 +73681,8 @@ graph [
     source 2551
     target 5763
     key 0
-    name "Avenida do Redondelo"
     name "Rua Pinheiro do Bicho"
+    name "Avenida do Redondelo"
     length 154.048
     traffic 1
     blocked 0
@@ -74015,8 +74015,8 @@ graph [
     source 2576
     target 3964
     key 0
-    name "Largo da Cruzinha"
     name "Rua do Pardejo"
+    name "Largo da Cruzinha"
     length 215.911
     traffic 1
     blocked 0
@@ -74124,8 +74124,8 @@ graph [
     source 2592
     target 5030
     key 0
-    name "Avenida Ant&#243;nio Macedo"
     name "Circular Norte de Braga"
+    name "Avenida Ant&#243;nio Macedo"
     length 832.874
     traffic 1
     blocked 0
@@ -77739,8 +77739,8 @@ graph [
     source 2896
     target 4120
     key 0
-    name "Largo da Senhora-a-Branca"
     name "Rua do Raio"
+    name "Largo da Senhora-a-Branca"
     length 191.736
     traffic 1
     blocked 0
@@ -77857,8 +77857,8 @@ graph [
     source 2912
     target 4014
     key 0
-    name "Avenida Conde Dom Henrique"
     name "Rua do Caires"
+    name "Avenida Conde Dom Henrique"
     length 277.605
     traffic 1
     blocked 0
@@ -78191,8 +78191,8 @@ graph [
     source 2937
     target 5939
     key 0
-    name "Rua Comendador Padre Vaz Pinto"
     name "Rua Jardins de Andrias"
+    name "Rua Comendador Padre Vaz Pinto"
     length 329.986
     traffic 1
     blocked 0
@@ -78364,8 +78364,8 @@ graph [
     source 2950
     target 2952
     key 0
-    name "Avenida Coronel Ara&#250;jo Pinto"
     name "Rua de Santo Amaro"
+    name "Avenida Coronel Ara&#250;jo Pinto"
     length 331.944
     traffic 1
     blocked 0
@@ -79464,8 +79464,8 @@ graph [
     source 3058
     target 4923
     key 0
-    name "Largo de Dadim"
     name "Rua de Cantoneiro"
+    name "Largo de Dadim"
     length 262.628
     traffic 1
     blocked 0
@@ -79582,8 +79582,8 @@ graph [
     source 3075
     target 5853
     key 0
-    name "Rua do Parque Industrial de Marvila"
     name "Rua das Caldas"
+    name "Rua do Parque Industrial de Marvila"
     length 319.933
     traffic 1
     blocked 0
@@ -80510,8 +80510,8 @@ graph [
     source 3156
     target 3160
     key 1
-    name "Rua Cal&#231;ada Romana"
     name "Rua Manuel Teixeira da Silva"
+    name "Rua Cal&#231;ada Romana"
     length 104.093
     traffic 1
     blocked 0
@@ -81942,8 +81942,8 @@ graph [
     source 3285
     target 4664
     key 0
-    name "Avenida Ponte de Covedelo"
     name "Avenida do Coved&#234;lo"
+    name "Avenida Ponte de Covedelo"
     length 47.575
     traffic 1
     blocked 0
@@ -82339,8 +82339,8 @@ graph [
     source 3331
     target 3340
     key 0
-    name "Rua das Cam&#233;lias"
     name "Rua Ant&#243;nio Gon&#231;alves Braga"
+    name "Rua das Cam&#233;lias"
     length 227.561
     traffic 1
     blocked 0
@@ -83775,8 +83775,8 @@ graph [
     source 3474
     target 3478
     key 0
-    name "Rua Ant&#243;nio Costa Magalh&#227;es"
     name "Rua do Marmeleiro"
+    name "Rua Ant&#243;nio Costa Magalh&#227;es"
     length 127.483
     traffic 1
     blocked 0
@@ -84776,8 +84776,8 @@ graph [
     source 3585
     target 3588
     key 0
-    name "Rua de Nova&#237;nho"
     name "Rua de Pousada"
+    name "Rua de Nova&#237;nho"
     length 81.0
     traffic 1
     blocked 0
@@ -85300,8 +85300,8 @@ graph [
     source 3628
     target 4826
     key 0
-    name "Rua do Sand&#227;o"
     name "Travessa do Sand&#227;o"
+    name "Rua do Sand&#227;o"
     length 122.931
     traffic 1
     blocked 0
@@ -86409,8 +86409,8 @@ graph [
     source 3741
     target 4545
     key 0
-    name "Rua da Senhora do &#211;"
     name "Rua Melhorado de Baixo"
+    name "Rua da Senhora do &#211;"
     length 330.607
     traffic 1
     blocked 0
@@ -86879,8 +86879,8 @@ graph [
     source 3781
     target 5822
     key 0
-    name "Rua da Bou&#231;a"
     name "Rua do Porto de Martim"
+    name "Rua da Bou&#231;a"
     length 113.2
     traffic 1
     blocked 0
@@ -87771,8 +87771,8 @@ graph [
     source 3858
     target 3859
     key 0
-    name "Rua da Lardoeira"
     name "Rua de Fij&#243;"
+    name "Rua da Lardoeira"
     length 378.414
     traffic 1
     blocked 0
@@ -87844,8 +87844,8 @@ graph [
     source 3865
     target 4160
     key 0
-    name "Rua da Serra"
     name "Rua da Escola"
+    name "Rua da Serra"
     length 1067.537
     traffic 1
     blocked 0
@@ -89196,8 +89196,8 @@ graph [
     source 3963
     target 3966
     key 0
-    name "Rua de Padim"
     name "Rua de Mariz"
+    name "Rua de Padim"
     length 168.757
     traffic 1
     blocked 0
@@ -90440,8 +90440,8 @@ graph [
     source 4056
     target 4305
     key 0
-    name "Rua dos Moleiros"
     name "Rua do Pinheiro"
+    name "Rua dos Moleiros"
     length 455.572
     traffic 1
     blocked 0
@@ -92145,8 +92145,8 @@ graph [
     source 4199
     target 5772
     key 0
-    name "Rua do Pombal"
     name "Largo da Lage"
+    name "Rua do Pombal"
     length 182.118
     traffic 1
     blocked 0
@@ -92182,8 +92182,8 @@ graph [
     source 4201
     target 4213
     key 0
-    name "Rua das Fonta&#237;nhas"
     name "Rua de S&#227;o Vicente"
+    name "Rua das Fonta&#237;nhas"
     length 328.999
     traffic 1
     blocked 0
@@ -94218,8 +94218,8 @@ graph [
     source 4437
     target 4438
     key 0
-    name "Rua Joaquim Gomes da Cunha"
     name "Rua Ant&#243;nio Jos&#233; Ribeiro"
+    name "Rua Joaquim Gomes da Cunha"
     length 202.876
     traffic 1
     blocked 0
@@ -94526,8 +94526,8 @@ graph [
     source 4471
     target 4472
     key 0
-    name "Rua do Estremo"
     name "Rua do Extremo"
+    name "Rua do Estremo"
     length 221.656
     traffic 1
     blocked 0
@@ -94689,8 +94689,8 @@ graph [
     source 4485
     target 4489
     key 1
-    name "Rua dos Poveiros"
     name "Rua 1&#186; de Dezembro"
+    name "Rua dos Poveiros"
     length 191.489
     traffic 1
     blocked 0
@@ -95096,8 +95096,8 @@ graph [
     source 4537
     target 4538
     key 1
-    name "Rua Fonte dos Paulinhos"
     name "Rua 1&#186; de Maio"
+    name "Rua Fonte dos Paulinhos"
     length 154.442
     traffic 1
     blocked 0
@@ -96080,8 +96080,8 @@ graph [
     source 4655
     target 4664
     key 0
-    name "Praceta das Agras"
     name "Avenida da Igreja"
+    name "Praceta das Agras"
     length 258.694
     traffic 1
     blocked 0
@@ -96144,8 +96144,8 @@ graph [
     source 4662
     target 4672
     key 0
-    name "Avenida Ponte de Covedelo"
     name "Avenida do Coved&#234;lo"
+    name "Avenida Ponte de Covedelo"
     length 90.942
     traffic 1
     blocked 0
@@ -96883,8 +96883,8 @@ graph [
     source 4752
     target 4755
     key 0
-    name "Rua do Alambique"
     name "Rua do Covil"
+    name "Rua do Alambique"
     length 258.484
     traffic 1
     blocked 0
@@ -97533,8 +97533,8 @@ graph [
     source 4808
     target 5627
     key 0
-    name "Travessa Capit&#227;o Faria de Ara&#250;jo"
     name "Cal&#231;ada do Outeiro"
+    name "Travessa Capit&#227;o Faria de Ara&#250;jo"
     length 178.357
     traffic 1
     blocked 0
@@ -99389,8 +99389,8 @@ graph [
     source 5119
     target 5123
     key 0
-    name "Rua das Oliveiras"
     name "Rua Nascente"
+    name "Rua das Oliveiras"
     length 109.428
     traffic 1
     blocked 0
@@ -99814,8 +99814,8 @@ graph [
     source 5215
     target 5218
     key 0
-    name "Rua da Estrada Velha"
     name "Rua do Belido de Cima"
+    name "Rua da Estrada Velha"
     length 143.82
     traffic 1
     blocked 0
@@ -100742,8 +100742,8 @@ graph [
     source 5415
     target 5416
     key 0
-    name "Rua Professor Machado Vilela"
     name "Rua Doutor Francisco Duarte"
+    name "Rua Professor Machado Vilela"
     length 26.606
     traffic 1
     blocked 0
@@ -102284,8 +102284,8 @@ graph [
     source 5769
     target 5770
     key 0
-    name "Rua das Penas"
     name "Largo da Lage"
+    name "Rua das Penas"
     length 31.52
     traffic 1
     blocked 0

@@ -8,7 +8,26 @@ from dados.construcao_grafo import construir_grafo
 import matplotlib.pyplot as plt
 import osmnx as ox
 
+
+def alterar_label_arquivo(nome_arquivo):
+    # Abre o arquivo para leitura
+    with open(nome_arquivo, 'r') as arquivo:
+        linhas = arquivo.readlines()
+
+    # Procura a linha que contém a label e a altera
+    for i, linha in enumerate(linhas):
+        if 'label "5379"\n' in linha:
+            linhas[i] = 'label "ORIGIN"\n'
+            break  # Para de procurar após encontrar a linha
+
+    # Abre o arquivo para escrita, sobrescrevendo o conteúdo anterior
+    with open(nome_arquivo, 'w') as arquivo:
+        arquivo.writelines(linhas)
+
+
 construir_grafo()
+
+alterar_label_arquivo('./dados/grafo.gml')
 
 g = nx.read_gml('./dados/grafo.gml')
 
