@@ -1,5 +1,6 @@
 from collections import deque
 import heapq
+from enchaminhamento import aux_get
 
 
 def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=[]):
@@ -66,7 +67,7 @@ def dijkstra(graph, start, end):
         visited.append(current_node)
 
         for neighbor, edge_data in graph[current_node].items():
-            edge_cost = edge_data["length"]
+            edge_cost = aux_get(edge_data)["length"]
             total_cost = current_length + edge_cost
 
             if total_cost < lengths[neighbor]:
@@ -78,8 +79,8 @@ def dijkstra(graph, start, end):
     while current != start:
         path.insert(0, current)
         current = min((node for node in graph[current] if
-                       lengths[node] + graph[current][node]["length"] == lengths[current]),
-                      key=lambda x: graph[current][x]["length"])
+                       lengths[node] + aux_get(graph[current][node])["length"] == lengths[current]),
+                      key=lambda x: aux_get(graph[current][x])["length"])
 
     path.insert(0, start)
 

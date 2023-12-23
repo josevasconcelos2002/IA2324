@@ -22,12 +22,12 @@ g_un = g_un.subgraph(largest_component)
 # Mudar o nome (identificação) dos nodos para conveniência de utilização apenas
 # Inicialmente vêm com um número grande (osmid) como identificador. Aqui são numerados por ordem crescente
 nodes, edges = ox.graph_to_gdfs(g_un)
-node_rename_mapping = {old_node: str(new_node) for new_node, old_node in enumerate(g_un.nodes, start=1)}
+node_rename_mapping = {old_node: str(new_node) for new_node, old_node in enumerate(g_un.nodes, start=0)}
 g_un = nx.relabel_nodes(g_un, node_rename_mapping)
 
 # Remoção de atributos dados pelo OSM que não são importantes
 # Adicção de atributos extra
-g_un_g = nx.Graph(g_un)
+g_un_g = nx.MultiGraph(g_un)
 for u, v, data in g_un_g.edges(data=True):
     data['traffic'] = 1
     data['blocked'] = False
@@ -45,8 +45,8 @@ for u, v, data in g_un_g.edges(data=True):
     data.pop('tunnel', None)
     data.pop('width', None)
 for node, data in g_un_g.nodes(data=True):
-    #data.pop('x', None)
-    #data.pop('y', None)
+    # data.pop('x', None)
+    # data.pop('y', None)
     data.pop('ref', None)
     data.pop('geometry', None)
     data.pop('highway', None)

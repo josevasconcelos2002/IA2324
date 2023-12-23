@@ -3,7 +3,7 @@ import networkx as nx
 from encomenda import Encomenda
 from random import randint
 from estafeta import Estafeta
-from algoritmos import dijkstra
+from algoritmos import dijkstra, bfs
 import matplotlib.pyplot as plt
 import osmnx as ox
 
@@ -27,22 +27,7 @@ for i in range(15):
     if i >= 10:
         vehicle = 3
     estafetas.append(Estafeta(i, vehicle))
-    """
-#estafetas.append(Estafeta(0, 1))
-#estafetas.append(Estafeta(1, 1))
 
-r = create_routes(g, encomendas, estafetas, dijkstra)
-print(r)
-total_encomendas = 0
-for (s, ve), v in r.items():
-    print(f'In section {s} with vehicle {ve}:')
-    sec_total = 0
-    for e in v:
-        sec_total += 1
-    print(sec_total)
-    total_encomendas += sec_total
-print('Encomendas no r = ' + str(total_encomendas))
-    """
 encomendas = sort_encomendas(g, encomendas)
 estafetas = sort_estafetas(estafetas)
 
@@ -63,28 +48,11 @@ for k, (l, w) in s.items():
 print(f"Para um total de {t} encomendas atribuidas")
 
 r = route(estafetas, s, dijkstra, g)
+print(r)
+print("Realizou route")
 
-print("VOU COMECAR AS MERDAS PESADAS MEU")
-
-list_nodes = [encomenda.destination[0] for encomenda in r[0]]
-"""
-new_g = ox.graph_from_place('Braga, Braga', network_type="drive")
-
-node_rename_mapping = {old_node: str(new_node) for new_node, old_node in enumerate(new_g.nodes, start=1)}
-g_un = nx.relabel_nodes(new_g, node_rename_mapping)
-"""
-print(list_nodes)
-
-ox.plot.plot_graph_route(g, list_nodes)
-"""
-# Mudar o nome (identificação) dos nodos para conveniência de utilização apenas
-# Inicialmente vêm com um número grande (osmid) como identificador. Aqui são numerados por ordem crescente
-nodes, edges = ox.graph_to_gdfs(g)
-node_rename_mapping = {old_node: str(new_node) for new_node, old_node in enumerate(g.nodes, start=1)}
-g_un = nx.relabel_nodes(g, node_rename_mapping)
-
-# TODO: meter isto a mostrar grafo
-_, ax = ox.plot_graph(ox.project_graph(g_un), show=False, close=False)
-nx.draw_networkx_nodes(g_un, pos=ox.graph_to_gdfs(g_un, edges=False).geometry.to_dict(), nodelist=list_nodes,
-                       node_color='red', ax=ax)
-"""
+# = ['b' if (u == 'ORIGIN') else 'yellow' for u, v, k in g.edges(keys=True)]
+#ox.plot_graph_routes(g, r[0], route_linewidth=6, node_size=0, route_alpha=1, node_color=node_color)
+for section, route in r.items():
+    ox.plot_graph_routes(g, route, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
+                         show=False, save=True, filepath=f"./routes/section_{section}.png")

@@ -168,7 +168,7 @@ def route(estafetas, sections, algoritmo, graph):
                     visited_deliveries.append(enc)
                     if section not in assigned_encomendas.keys():
                         assigned_encomendas[section] = []
-                    assigned_encomendas[section].append(enc)
+                    assigned_encomendas[section].append(path)
                 #else:
                     # TODO: LIDAR COM ENCOMENDAS ATRASADAS
                     # secalhar tentar atribuir a estafetas que nao tem encomendas, se nao for possivel, atribuir a estafeta
@@ -183,5 +183,9 @@ def calculate_delivery_time(path, vehicle, weight, graph):
     total_time = 0
     for i in range(0, len(path) - 1):
         edge = graph[path[i]][path[i + 1]]
-        total_time += edge['length'] / (max_speed * edge['traffic'])
+        aux = aux_get(edge)
+        total_time += aux['length'] / (max_speed * aux['traffic'])
     return total_time
+
+def aux_get(x):
+    return next(iter(x.items()))[1]
