@@ -4,8 +4,11 @@ from encomenda import Encomenda
 from random import randint
 from estafeta import Estafeta
 from algoritmos import dijkstra, bfs
+from dados.construcao_grafo import construir_grafo
 import matplotlib.pyplot as plt
 import osmnx as ox
+
+construir_grafo()
 
 g = nx.read_gml('./dados/grafo.gml')
 
@@ -14,7 +17,8 @@ origin = str(nodes[0][0])
 maximum = len(nodes) - 1
 encomendas = []
 for i in range(30):
-    encomendas.append(Encomenda(i, None, origin, nodes[randint(0, maximum)], randint(1, 2), None, 350))
+    encomendas.append(Encomenda(
+        i, None, origin, nodes[randint(0, maximum)], randint(1, 2), None, 350))
 
 estafetas = []
 vehicle = 0
@@ -37,7 +41,8 @@ t = 0
 p = 0
 for k, (l, w) in s.items():
     if len(l) > 0:
-        print(f"Estafeta {k}, com vehiculo {estafetas[k].vehicle.value['type']}, tem as encomendas:")
+        print(
+            f"Estafeta {k}, com vehiculo {estafetas[k].vehicle.value['type']}, tem as encomendas:")
         for e in l:
             print(f"Encomenda {e.idnt}, peso {e.weight}")
             t += 1
@@ -52,7 +57,7 @@ print(r)
 print("Realizou route")
 
 # = ['b' if (u == 'ORIGIN') else 'yellow' for u, v, k in g.edges(keys=True)]
-#ox.plot_graph_routes(g, r[0], route_linewidth=6, node_size=0, route_alpha=1, node_color=node_color)
+# ox.plot_graph_routes(g, r[0], route_linewidth=6, node_size=0, route_alpha=1, node_color=node_color)
 for section, route in r.items():
     ox.plot_graph_routes(g, route, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
                          show=False, save=True, filepath=f"./routes/section_{section}.png")
