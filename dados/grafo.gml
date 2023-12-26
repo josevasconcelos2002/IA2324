@@ -1,6 +1,6 @@
 graph [
   multigraph 1
-  created_date "2023-12-23 10:18:57"
+  created_date "2023-12-26 11:20:21"
   created_with "OSMnx 1.8.0"
   crs "epsg:4326"
   simplified 1
@@ -36191,8 +36191,8 @@ label "ORIGIN"
     source 3
     target 646
     key 0
-    name "Avenida Miguel Torga"
     name "Avenida Francisco Salgado Zenha"
+    name "Avenida Miguel Torga"
     length 228.216
     traffic 1
     blocked 0
@@ -36436,8 +36436,8 @@ label "ORIGIN"
     source 15
     target 26
     key 0
-    name "Avenida Imaculada Concei&#231;&#227;o"
     name "Avenida Jo&#227;o XXI"
+    name "Avenida Imaculada Concei&#231;&#227;o"
     length 440.105
     traffic 1
     blocked 0
@@ -36718,8 +36718,8 @@ label "ORIGIN"
     source 30
     target 31
     key 0
-    name "Avenida Imaculada Concei&#231;&#227;o"
     name "Avenida Jo&#227;o XXI"
+    name "Avenida Imaculada Concei&#231;&#227;o"
     length 423.174
     traffic 1
     blocked 0
@@ -37398,8 +37398,8 @@ label "ORIGIN"
     source 64
     target 5785
     key 0
-    name "Pra&#231;a do Bocage"
     name "Rua Padre Ant&#243;nio Vieira"
+    name "Pra&#231;a do Bocage"
     length 42.014
     traffic 1
     blocked 0
@@ -37642,8 +37642,8 @@ label "ORIGIN"
     source 79
     target 3066
     key 0
-    name "Rua Dom Ant&#243;nio Bento Martins J&#250;nior"
     name "Largo do Monte D'Arcos"
+    name "Rua Dom Ant&#243;nio Bento Martins J&#250;nior"
     length 100.078
     traffic 1
     blocked 0
@@ -38265,8 +38265,8 @@ label "ORIGIN"
     source 112
     target 3281
     key 0
-    name "Avenida General Norton de Matos"
     name "Pra&#231;a Alexandre Herculano"
+    name "Avenida General Norton de Matos"
     length 119.216
     traffic 1
     blocked 0
@@ -38293,8 +38293,8 @@ label "ORIGIN"
     source 112
     target 2081
     key 0
-    name "Avenida Central"
     name "Rua dos Ch&#227;os"
+    name "Avenida Central"
     length 272.98
     traffic 1
     blocked 0
@@ -38717,8 +38717,8 @@ label "ORIGIN"
     source 132
     target 5167
     key 0
-    name "Avenida Miguel Torga"
     name "Circular Sul de Braga"
+    name "Avenida Miguel Torga"
     length 1038.944
     traffic 1
     blocked 0
@@ -39035,8 +39035,8 @@ label "ORIGIN"
     source 150
     target 2909
     key 0
-    name "Avenida Imaculada Concei&#231;&#227;o"
     name "Rua Cidade do Porto"
+    name "Avenida Imaculada Concei&#231;&#227;o"
     length 280.196
     traffic 1
     blocked 0
@@ -44015,8 +44015,8 @@ label "ORIGIN"
     source 441
     target 443
     key 0
-    name "Largo de Santa Cruz"
     name "Largo Carlos Amarante"
+    name "Largo de Santa Cruz"
     length 93.427
     traffic 1
     blocked 0
@@ -44125,8 +44125,8 @@ label "ORIGIN"
     source 446
     target 5239
     key 0
-    name "Rua do Carmo"
     name "Pra&#231;a Conde Agrolongo"
+    name "Rua do Carmo"
     length 107.951
     traffic 1
     blocked 0
@@ -46299,8 +46299,8 @@ label "ORIGIN"
     source 581
     target 5247
     key 1
-    name "Rua do Pinheiro Manso"
     name "Rua da Bou&#231;a"
+    name "Rua do Pinheiro Manso"
     length 89.412
     traffic 1
     blocked 0
@@ -47003,8 +47003,8 @@ label "ORIGIN"
     source 624
     target 3749
     key 0
-    name "Estrada de S&#227;o Pedro"
     name "Rua da Igreja"
+    name "Estrada de S&#227;o Pedro"
     length 117.388
     traffic 1
     blocked 0
@@ -47049,8 +47049,8 @@ label "ORIGIN"
     source 626
     target 635
     key 0
-    name "Rua de Luis"
     name "Rua do Xisto"
+    name "Rua de Luis"
     length 132.058
     traffic 1
     blocked 0
@@ -47275,8 +47275,8 @@ label "ORIGIN"
     source 637
     target 750
     key 0
-    name "Rua do Conservat&#243;rio"
     name "Rua Padre Manuel Alaio"
+    name "Rua do Conservat&#243;rio"
     length 283.247
     traffic 1
     blocked 0
@@ -47303,8 +47303,8 @@ label "ORIGIN"
     source 638
     target 750
     key 0
-    name "Rua do Conservat&#243;rio"
     name "Rua Adelina Caravana"
+    name "Rua do Conservat&#243;rio"
     length 122.66
     traffic 1
     blocked 0
@@ -48324,8 +48324,8 @@ label "ORIGIN"
     source 696
     target 2972
     key 0
-    name "Rua das Nogueiras"
     name "Rua de Rebanhos"
+    name "Rua das Nogueiras"
     length 378.491
     traffic 1
     blocked 0
@@ -48433,8 +48433,8 @@ label "ORIGIN"
     source 703
     target 2972
     key 0
-    name "Rua de Rebanhos"
     name "Rua dos Padres Carmelitas"
+    name "Rua de Rebanhos"
     length 368.932
     traffic 1
     blocked 0
@@ -48803,8 +48803,8 @@ label "ORIGIN"
     source 729
     target 1143
     key 0
-    name "Rua Lopes Gon&#231;alves"
     name "Rua Moura Coutinho"
+    name "Rua Lopes Gon&#231;alves"
     length 167.078
     traffic 1
     blocked 0
@@ -51232,8 +51232,8 @@ label "ORIGIN"
     source 896
     target 3068
     key 0
-    name "Pra&#231;a Fl&#225;vio S&#225; Leite"
     name "Rua C&#226;ndido de Oliveira"
+    name "Pra&#231;a Fl&#225;vio S&#225; Leite"
     length 165.288
     traffic 1
     blocked 0
@@ -52448,9 +52448,9 @@ label "ORIGIN"
     source 953
     target 4193
     key 0
-    name "Avenida da Granja"
-    name "Avenida Padre Manuel da Costa Rego"
     name "Avenida Nacional"
+    name "Avenida Padre Manuel da Costa Rego"
+    name "Avenida da Granja"
     length 324.899
     traffic 1
     blocked 0
@@ -52614,8 +52614,8 @@ label "ORIGIN"
     source 960
     target 968
     key 0
-    name "Rua da Varziela"
     name "Rua da Devesa"
+    name "Rua da Varziela"
     length 211.414
     traffic 1
     blocked 0
@@ -52822,8 +52822,8 @@ label "ORIGIN"
     source 972
     target 3313
     key 0
-    name "Rua de Baixo"
     name "Rua de Cima"
+    name "Rua de Baixo"
     length 11.82
     traffic 1
     blocked 0
@@ -53733,8 +53733,8 @@ label "ORIGIN"
     source 1022
     target 5910
     key 0
-    name "Rua Marceliano Ara&#250;jo"
     name "Rua Frei Cipriano da Cruz"
+    name "Rua Marceliano Ara&#250;jo"
     length 128.154
     traffic 1
     blocked 0
@@ -54691,8 +54691,8 @@ label "ORIGIN"
     source 1095
     target 1357
     key 0
-    name "Cal&#231;ada da Garapoa"
     name "Rua do Noval"
+    name "Cal&#231;ada da Garapoa"
     length 317.83
     traffic 1
     blocked 0
@@ -55584,8 +55584,8 @@ label "ORIGIN"
     source 1153
     target 1671
     key 0
-    name "Rua da Ribela"
     name "Rua do Lameir&#227;o"
+    name "Rua da Ribela"
     length 328.416
     traffic 1
     blocked 0
@@ -55594,8 +55594,8 @@ label "ORIGIN"
     source 1153
     target 5097
     key 0
-    name "Rua das Cavadas"
     name "Rua do Lameir&#227;o"
+    name "Rua das Cavadas"
     length 339.069
     traffic 1
     blocked 0
@@ -58892,8 +58892,8 @@ label "ORIGIN"
     source 1386
     target 1391
     key 0
-    name "Rua do Pinheiro"
     name "Rua da Igreja"
+    name "Rua do Pinheiro"
     length 202.124
     traffic 1
     blocked 0
@@ -60059,9 +60059,9 @@ label "ORIGIN"
     source 1485
     target 1488
     key 0
+    name "Travessa das Grovas"
     name "Rua Santa Maria"
     name "Rua Primavera"
-    name "Travessa das Grovas"
     length 61.775
     traffic 1
     blocked 0
@@ -60710,8 +60710,8 @@ label "ORIGIN"
     source 1529
     target 2962
     key 0
-    name "Rua Doutor Manuel Jos&#233; de Oliveira Machado"
     name "Rua Dr. Manuel Jos&#233; de Oliveira Machado"
+    name "Rua Doutor Manuel Jos&#233; de Oliveira Machado"
     length 127.555
     traffic 1
     blocked 0
@@ -61297,8 +61297,8 @@ label "ORIGIN"
     source 1569
     target 4551
     key 0
-    name "Avenida 25 de Abril"
     name "Largo de Carcavelos"
+    name "Avenida 25 de Abril"
     length 91.778
     traffic 1
     blocked 0
@@ -61768,8 +61768,8 @@ label "ORIGIN"
     source 1604
     target 3583
     key 0
-    name "Rua Abade Loureira"
     name "Rua Dom Francisco de Noronha"
+    name "Rua Abade Loureira"
     length 52.198
     traffic 1
     blocked 0
@@ -61850,9 +61850,9 @@ label "ORIGIN"
     source 1608
     target 1616
     key 1
-    name "Rua Gon&#231;alves Braga"
     name "Rua Gra&#231;a J&#250;nior"
     name "Rua Dias Silva"
+    name "Rua Gon&#231;alves Braga"
     length 121.605
     traffic 1
     blocked 0
@@ -61951,8 +61951,8 @@ label "ORIGIN"
     source 1614
     target 5454
     key 0
-    name "Rua Doutor Fonseca Lima"
     name "Rua Doutor Costa Palmeira"
+    name "Rua Doutor Fonseca Lima"
     length 88.845
     traffic 1
     blocked 0
@@ -63494,8 +63494,8 @@ label "ORIGIN"
     source 1729
     target 1731
     key 0
-    name "Rua Jos&#233; Augusto Vieira"
     name "Rua Conde Aurora"
+    name "Rua Jos&#233; Augusto Vieira"
     length 64.77
     traffic 1
     blocked 0
@@ -63504,8 +63504,8 @@ label "ORIGIN"
     source 1729
     target 4346
     key 0
-    name "Travessa Augusto Veloso"
     name "Rua Dom Ant&#243;nio Costa"
+    name "Travessa Augusto Veloso"
     length 254.21
     traffic 1
     blocked 0
@@ -63550,8 +63550,8 @@ label "ORIGIN"
     source 1732
     target 2435
     key 0
-    name "Rua An&#237;bal Mendon&#231;a"
     name "Rua Augusto Veloso"
+    name "Rua An&#237;bal Mendon&#231;a"
     length 126.184
     traffic 1
     blocked 0
@@ -65011,8 +65011,8 @@ label "ORIGIN"
     source 1838
     target 1843
     key 0
-    name "Travessa do Passal"
     name "Rua do Passal"
+    name "Travessa do Passal"
     length 172.811
     traffic 1
     blocked 0
@@ -66113,8 +66113,8 @@ label "ORIGIN"
     source 1926
     target 2315
     key 0
-    name "Rua Feliciano Ramos"
     name "Rua das Pocinhas"
+    name "Rua Feliciano Ramos"
     length 282.457
     traffic 1
     blocked 0
@@ -67779,8 +67779,8 @@ label "ORIGIN"
     source 2061
     target 2145
     key 0
-    name "Rua da Ma&#237;nha"
     name "Rua do Meirinho"
+    name "Rua da Ma&#237;nha"
     length 357.116
     traffic 1
     blocked 0
@@ -68438,8 +68438,8 @@ label "ORIGIN"
     source 2106
     target 2107
     key 0
-    name "Rua do Senhor Quebrado"
     name "Rua do Cruzeiro"
+    name "Rua do Senhor Quebrado"
     length 127.339
     traffic 1
     blocked 0
@@ -68710,8 +68710,8 @@ label "ORIGIN"
     source 2127
     target 2467
     key 0
-    name "Rua dos Falc&#245;es"
     name "Rua de S&#227;o Bentinho"
+    name "Rua dos Falc&#245;es"
     length 159.25
     traffic 1
     blocked 0
@@ -69369,8 +69369,8 @@ label "ORIGIN"
     source 2163
     target 4906
     key 0
-    name "Rua Padre Jos&#233; G. Eigenmann"
     name "Travessa do Esp&#237;rito Santo"
+    name "Rua Padre Jos&#233; G. Eigenmann"
     length 104.072
     traffic 1
     blocked 0
@@ -69649,8 +69649,8 @@ label "ORIGIN"
     source 2177
     target 3258
     key 0
-    name "Avenida da Independ&#234;ncia"
     name "Avenida de S&#227;o Tiago"
+    name "Avenida da Independ&#234;ncia"
     length 315.304
     traffic 1
     blocked 0
@@ -70849,8 +70849,8 @@ label "ORIGIN"
     source 2277
     target 2966
     key 0
-    name "Avenida Miguel Torga"
     name "Circular Sul de Braga"
+    name "Avenida Miguel Torga"
     length 1032.169
     traffic 1
     blocked 0
@@ -71498,8 +71498,8 @@ label "ORIGIN"
     source 2354
     target 5637
     key 0
-    name "Rua Jaime Sotto Mayor"
     name "Rua do Pinheiro"
+    name "Rua Jaime Sotto Mayor"
     length 78.205
     traffic 1
     blocked 0
@@ -72481,8 +72481,8 @@ label "ORIGIN"
     source 2431
     target 3264
     key 0
-    name "Largo das Alminhas"
     name "Rua dos Presidentes"
+    name "Largo das Alminhas"
     length 140.941
     traffic 1
     blocked 0
@@ -72878,8 +72878,8 @@ label "ORIGIN"
     source 2463
     target 3129
     key 0
-    name "Rua das Regadinhas"
     name "Rua do Parque Comercial"
+    name "Rua das Regadinhas"
     length 335.661
     traffic 1
     blocked 0
@@ -73122,8 +73122,8 @@ label "ORIGIN"
     source 2494
     target 2496
     key 0
-    name "Rua da Torre"
     name "Rua da Igreja Velha"
+    name "Rua da Torre"
     length 220.967
     traffic 1
     blocked 0
@@ -73681,8 +73681,8 @@ label "ORIGIN"
     source 2551
     target 5763
     key 0
-    name "Rua Pinheiro do Bicho"
     name "Avenida do Redondelo"
+    name "Rua Pinheiro do Bicho"
     length 154.048
     traffic 1
     blocked 0
@@ -74124,8 +74124,8 @@ label "ORIGIN"
     source 2592
     target 5030
     key 0
-    name "Circular Norte de Braga"
     name "Avenida Ant&#243;nio Macedo"
+    name "Circular Norte de Braga"
     length 832.874
     traffic 1
     blocked 0
@@ -75279,8 +75279,8 @@ label "ORIGIN"
     target 2961
     key 0
     name "Rua Gil Vicente"
-    name "Rua Luis Ant&#243;nio Verney"
     name "Travessa Gil Vicente"
+    name "Rua Luis Ant&#243;nio Verney"
     length 97.35
     traffic 1
     blocked 0
@@ -75721,8 +75721,8 @@ label "ORIGIN"
     source 2731
     target 3539
     key 0
-    name "Rua do Fujacal"
     name "Rua Conselheiro Lobato"
+    name "Rua do Fujacal"
     length 22.806
     traffic 1
     blocked 0
@@ -76298,8 +76298,8 @@ label "ORIGIN"
     source 2775
     target 2778
     key 0
-    name "Rua da Serpe"
     name "Rua Jo&#227;o Soares Vieira"
+    name "Rua da Serpe"
     length 103.147
     traffic 1
     blocked 0
@@ -77739,8 +77739,8 @@ label "ORIGIN"
     source 2896
     target 4120
     key 0
-    name "Rua do Raio"
     name "Largo da Senhora-a-Branca"
+    name "Rua do Raio"
     length 191.736
     traffic 1
     blocked 0
@@ -78282,8 +78282,8 @@ label "ORIGIN"
     source 2941
     target 4369
     key 0
-    name "Rua do Monte Talegre"
     name "Rua do Monte"
+    name "Rua do Monte Talegre"
     length 1218.515
     traffic 1
     blocked 0
@@ -78364,8 +78364,8 @@ label "ORIGIN"
     source 2950
     target 2952
     key 0
-    name "Rua de Santo Amaro"
     name "Avenida Coronel Ara&#250;jo Pinto"
+    name "Rua de Santo Amaro"
     length 331.944
     traffic 1
     blocked 0
@@ -79202,8 +79202,8 @@ label "ORIGIN"
     source 3035
     target 3036
     key 1
-    name "Rua Dom Rodrigo da Cunha"
     name "Rua Barros Soares"
+    name "Rua Dom Rodrigo da Cunha"
     length 43.213
     traffic 1
     blocked 0
@@ -79582,8 +79582,8 @@ label "ORIGIN"
     source 3075
     target 5853
     key 0
-    name "Rua das Caldas"
     name "Rua do Parque Industrial de Marvila"
+    name "Rua das Caldas"
     length 319.933
     traffic 1
     blocked 0
@@ -80510,8 +80510,8 @@ label "ORIGIN"
     source 3156
     target 3160
     key 1
-    name "Rua Manuel Teixeira da Silva"
     name "Rua Cal&#231;ada Romana"
+    name "Rua Manuel Teixeira da Silva"
     length 104.093
     traffic 1
     blocked 0
@@ -82339,8 +82339,8 @@ label "ORIGIN"
     source 3331
     target 3340
     key 0
-    name "Rua Ant&#243;nio Gon&#231;alves Braga"
     name "Rua das Cam&#233;lias"
+    name "Rua Ant&#243;nio Gon&#231;alves Braga"
     length 227.561
     traffic 1
     blocked 0
@@ -84280,8 +84280,8 @@ label "ORIGIN"
     source 3529
     target 4154
     key 0
-    name "Rua de Entre Campos"
     name "Rua da Capela"
+    name "Rua de Entre Campos"
     length 560.443
     traffic 1
     blocked 0
@@ -85191,8 +85191,8 @@ label "ORIGIN"
     source 3623
     target 5609
     key 0
-    name "Cal&#231;ada da Igreja"
     name "Largo Padre Borralheiro"
+    name "Cal&#231;ada da Igreja"
     length 124.723
     traffic 1
     blocked 0
@@ -85300,8 +85300,8 @@ label "ORIGIN"
     source 3628
     target 4826
     key 0
-    name "Travessa do Sand&#227;o"
     name "Rua do Sand&#227;o"
+    name "Travessa do Sand&#227;o"
     length 122.931
     traffic 1
     blocked 0
@@ -86318,8 +86318,8 @@ label "ORIGIN"
     source 3729
     target 3731
     key 0
-    name "Rua do C&#244;vo"
     name "Rua do Sobrado"
+    name "Rua do C&#244;vo"
     length 300.717
     traffic 1
     blocked 0
@@ -86409,8 +86409,8 @@ label "ORIGIN"
     source 3741
     target 4545
     key 0
-    name "Rua Melhorado de Baixo"
     name "Rua da Senhora do &#211;"
+    name "Rua Melhorado de Baixo"
     length 330.607
     traffic 1
     blocked 0
@@ -87771,8 +87771,8 @@ label "ORIGIN"
     source 3858
     target 3859
     key 0
-    name "Rua de Fij&#243;"
     name "Rua da Lardoeira"
+    name "Rua de Fij&#243;"
     length 378.414
     traffic 1
     blocked 0
@@ -89196,8 +89196,8 @@ label "ORIGIN"
     source 3963
     target 3966
     key 0
-    name "Rua de Mariz"
     name "Rua de Padim"
+    name "Rua de Mariz"
     length 168.757
     traffic 1
     blocked 0
@@ -90440,8 +90440,8 @@ label "ORIGIN"
     source 4056
     target 4305
     key 0
-    name "Rua do Pinheiro"
     name "Rua dos Moleiros"
+    name "Rua do Pinheiro"
     length 455.572
     traffic 1
     blocked 0
@@ -90549,8 +90549,8 @@ label "ORIGIN"
     source 4065
     target 4070
     key 0
-    name "Rua dos Salgueiros"
     name "Rua de Balbeira"
+    name "Rua dos Salgueiros"
     length 276.441
     traffic 1
     blocked 0
@@ -90739,8 +90739,8 @@ label "ORIGIN"
     source 4077
     target 4774
     key 0
-    name "Rua da &#205;nsua"
     name "Largo da Igreja"
+    name "Rua da &#205;nsua"
     length 234.537
     traffic 1
     blocked 0
@@ -92237,8 +92237,8 @@ label "ORIGIN"
     source 4204
     target 5769
     key 0
-    name "Rua do Pinheiro"
     name "Largo da Lage"
+    name "Rua do Pinheiro"
     length 73.678
     traffic 1
     blocked 0
@@ -94381,8 +94381,8 @@ label "ORIGIN"
     source 4454
     target 4461
     key 0
-    name "Largo de S&#227;o Br&#225;s"
     name "Rua de S&#227;o Br&#225;s"
+    name "Largo de S&#227;o Br&#225;s"
     length 91.913
     traffic 1
     blocked 0
@@ -94978,8 +94978,8 @@ label "ORIGIN"
     source 4522
     target 5358
     key 0
-    name "Largo de Sobremoure"
     name "Caminho da Ponte de Sobremoure"
+    name "Largo de Sobremoure"
     length 320.824
     traffic 1
     blocked 0
@@ -95096,8 +95096,8 @@ label "ORIGIN"
     source 4537
     target 4538
     key 1
-    name "Rua 1&#186; de Maio"
     name "Rua Fonte dos Paulinhos"
+    name "Rua 1&#186; de Maio"
     length 154.442
     traffic 1
     blocked 0
@@ -95322,8 +95322,8 @@ label "ORIGIN"
     source 4563
     target 5602
     key 0
-    name "Cangosta do Jogo da Bola"
     name "Travessa Espessande"
+    name "Cangosta do Jogo da Bola"
     length 134.465
     traffic 1
     blocked 0
@@ -96883,8 +96883,8 @@ label "ORIGIN"
     source 4752
     target 4755
     key 0
-    name "Rua do Covil"
     name "Rua do Alambique"
+    name "Rua do Covil"
     length 258.484
     traffic 1
     blocked 0
@@ -97451,8 +97451,8 @@ label "ORIGIN"
     source 4800
     target 5374
     key 0
-    name "Beco da Tomada"
     name "Travessa da Tomada"
+    name "Beco da Tomada"
     length 90.36
     traffic 1
     blocked 0
@@ -97533,8 +97533,8 @@ label "ORIGIN"
     source 4808
     target 5627
     key 0
-    name "Cal&#231;ada do Outeiro"
     name "Travessa Capit&#227;o Faria de Ara&#250;jo"
+    name "Cal&#231;ada do Outeiro"
     length 178.357
     traffic 1
     blocked 0
@@ -99444,8 +99444,8 @@ label "ORIGIN"
     source 5129
     target 5683
     key 0
-    name "Rua Jos&#233; Fernandes Ferreira"
     name "Travessa Jo&#227;o Marqu&#234;s da Cruz"
+    name "Rua Jos&#233; Fernandes Ferreira"
     length 104.676
     traffic 1
     blocked 0
@@ -99814,8 +99814,8 @@ label "ORIGIN"
     source 5215
     target 5218
     key 0
-    name "Rua do Belido de Cima"
     name "Rua da Estrada Velha"
+    name "Rua do Belido de Cima"
     length 143.82
     traffic 1
     blocked 0
@@ -101778,8 +101778,8 @@ label "ORIGIN"
     source 5662
     target 5664
     key 0
-    name "Largo do Porto de Martim"
     name "Rua Porto de Martim"
+    name "Largo do Porto de Martim"
     length 66.095
     traffic 1
     blocked 0
@@ -102229,8 +102229,8 @@ label "ORIGIN"
     source 5756
     target 5760
     key 0
-    name "Rua da Lamela"
     name "Rua do Sobrado"
+    name "Rua da Lamela"
     length 520.85
     traffic 1
     blocked 0
@@ -102834,8 +102834,8 @@ label "ORIGIN"
     source 5917
     target 5918
     key 0
-    name "Rua da Lameira"
     name "Rua da Estrada Nova"
+    name "Rua da Lameira"
     length 18.989
     traffic 1
     blocked 0
