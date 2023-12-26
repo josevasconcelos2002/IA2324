@@ -48,7 +48,7 @@ for k, (l, w) in s.items():
 
 print(f"Para um total de {t} encomendas atribuidas")
 
-r = route(estafetas, s, dijkstra, g)
+r, late = route(estafetas, s, dijkstra, g)
 print(r)
 print("Realizou route")
 
@@ -59,3 +59,11 @@ for section, route in r.items():
     else:
         ox.plot_graph_routes(g, route, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
                             show=False, save=True, filepath=f"./routes/section_{section}.png")
+
+for estafeta, (rating, late_encomendas, n_encomendas) in late.items():
+    with open(f"./routes/{estafeta}_relatorio.txt", 'w') as f:
+        lines = [f"Estafeta: {estafeta}\n", f"Numero de encomendas: {n_encomendas}\n"
+            , f"Rating: {format(rating / n_encomendas, '.1f')}\n", 'Encomendas atrasadas:\n']
+        for enc, time in late_encomendas.items():
+            lines.append(f"Encomenda {enc}: {time}\n")
+        f.writelines(lines)
