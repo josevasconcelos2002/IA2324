@@ -1,5 +1,4 @@
 import math
-import itertools
 
 R = 6371  # Raio do planeta
 
@@ -87,61 +86,6 @@ def calculate_euclidean_distance(lat1, lon1, lat2, lon2):
     z2 = R * math.sin(lat2)
 
     return math.sqrt(math.pow((x2 - x1), 2) + math.pow((y2 - y1), 2) + math.pow((z2 - z1), 2))
-    # mid = (lat1 + lat2) / 2
-    # return R * math.sqrt(math.pow((lat2 - lat1), 2) + math.pow(math.cos(mid * math.pow(lon2 - lon1, 2)), 2))
-
-
-"""
-def combine_by_weight(sections, estafetas):
-    # Ranges de peso dos vehículos
-    weight_ranges = {
-        3: range(1, 6),
-        2: range(6, 21),
-        1: range(21, 101),
-    }
-
-    all_combinations = {}
-
-    for section, encomenda_list in sections.items():
-        # Ordena as encomendas por peso
-        encomenda_list = sorted(encomenda_list, key=lambda x: x.weight)
-        # Para cada tipos de vehículo, pega no nome e na range de pesos que pode levar
-        vehicle = estafetas[section].vehicle.value['type']
-        weight_values = weight_ranges[vehicle]
-        # for weight_range, weight_values in weight_ranges.items():
-        filtered_combinations = set()
-        # r é o numero de elementos que cada agrupamento vai ter, e tem de variar de 1 ate ao tamanho da lista
-        for r in range(1, len(encomenda_list) + 1):  # Vary the length of combinations
-            # Para cada combinação possível de encomendas com r elementos
-            for combination in itertools.combinations(encomenda_list, r):
-                # Calcula o peso total dessa combinação
-                total_weight = sum(item.weight for item in combination)
-                # Assim tem todas as combinações que um vehiculo pode ter:
-                # if total_weight <= max(weight_values):
-                # Assim tem todas as combinaçõe que o vehiculo pode ter mas não as de outros vehículos:
-                if max(weight_values) >= total_weight >= min(weight_values):
-                    # Isto é para remover agrupamentos que ainda tem espaço possível para outras encomendas
-                    if r != 1:
-                        # Para todos os agrupamentos de r - 1 dos agrupamentos de r
-                        for comb in itertools.combinations(combination, r - 1):
-                            if comb in filtered_combinations:
-                                filtered_combinations.remove(comb)
-                    filtered_combinations.add(combination)
-
-        if filtered_combinations:
-            all_combinations[section, vehicle] = filtered_combinations
-
-
-# Prints
-    for (list_key, weight_range), combinations in all_combinations.items():
-        print(f"{list_key} combinations ({weight_range} weight range):")
-        for comb in combinations:
-            for e in comb:
-                print(str(e.weight) + " -> " + str(e.idnt))
-            print("============")
-    return all_combinations
-"""
-
 
 def route(estafetas, sections, algoritmo, graph):
     unused_estafetas = []

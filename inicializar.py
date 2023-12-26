@@ -3,18 +3,11 @@ from tkinter import ttk
 import networkx as nx
 from estafeta import Estafeta
 from encomenda import Encomenda
-from enchaminhamento import create_routes, create_sections, sort_estafetas, sort_encomendas, route
-from dados.construcao_grafo import construir_grafo
-from testes import alterar_label_arquivo
+from enchaminhamento import create_sections, sort_estafetas, sort_encomendas, route
 import matplotlib.pyplot as plt
 import osmnx as ox
 import algoritmos as alg
 import random    
-    
-    
-construir_grafo()
-
-alterar_label_arquivo('./dados/grafo.gml')
 
 g = nx.read_gml('./dados/grafo.gml')
 

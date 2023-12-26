@@ -18,7 +18,7 @@ def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=[]):
 
     for neighbor in graph.neighbors(start):
         if neighbor not in visited:
-            edge_cost = graph[start][neighbor]["length"]
+            edge_cost = aux_get(graph[start][neighbor])["length"]
             updated_cost = cost + edge_cost
             result = dfs(graph, neighbor, end, visited, updated_cost, path, visited_list)
             if result:
@@ -42,7 +42,7 @@ def bfs(graph, start, end):
 
             if current_node == end:
                 # Calculate the sum of edge costs along the path
-                cost = sum(graph[path[i]][path[i + 1]]["length"] for i in range(len(path) - 1))
+                cost = sum(aux_get(graph[path[i]][path[i + 1]])["length"] for i in range(len(path) - 1))
                 return visited_list, path, round(cost, 2)
 
             neighbors = graph[current_node]
@@ -112,7 +112,7 @@ def dfs_limit(graph, start, end, depth, visited=None, cost=0, path=None, visited
     if depth > 0:
         for neighbor in graph.neighbors(start):
             if neighbor not in visited:
-                edge_cost = graph[start][neighbor]["length"]
+                edge_cost = aux_get(graph[start][neighbor])["length"]
                 updated_cost = cost + edge_cost
                 result = dfs_limit(graph, neighbor, end, depth - 1, visited, updated_cost, path, visited_list)
                 if result:
@@ -121,47 +121,68 @@ def dfs_limit(graph, start, end, depth, visited=None, cost=0, path=None, visited
     return None
 
 
-def bidirectional(graph, start, goal):
-    forward_visited = []
-    backward_visited = []
-    forward_queue = deque([(start, [], 0)])
-    backward_queue = deque([(goal, [], 0)])
+def bidirectional(graph, start_node, end_node):
+    if start_node == end_node:
+        return [], [start_node], 0
 
-    while forward_queue or backward_queue:
-        if forward_queue:
-            forward_node, forward_path, cost = forward_queue.popleft()
+    forward_queue = [start_node]
+    backward_queue = [end_node]
 
-            if forward_node not in forward_visited:
-                forward_visited.append(forward_node)
-                forward_path.append(forward_node)
-#TODO: ISTO ESTÁ UMA CAGADA. É PRECISO ARRANJAR MANEIRA DE IR BUSCAR O CAMINHO AO BACKWARD_QUEUE. NAO SE PODE USAR O BFS
-                if forward_node == goal or forward_node in backward_visited:
-                    intersection_node = forward_node if forward_node in backward_visited else None
-                    _, b_path, b_cost = bfs(graph, intersection_node, goal)
-                    b_path.pop(0)
-                    path = forward_path + b_path
-                    return forward_visited + backward_visited, path, round(cost + b_cost, 2)
+    forward_visited = set()
+    backward_visited = set()
 
-                forward_neighbors = graph[forward_node]
-                forward_queue.extend((neighbor, forward_path.copy(), cost + graph[forward_node][neighbor]['length']) for neighbor in forward_neighbors if neighbor not in forward_visited)
+    forward_parent = {start_node: None}
+    backward_parent = {end_node: None}
 
-        if backward_queue:
-            backward_node, backward_path, cost = backward_queue.popleft()
+    intersection_node = None
 
-            if backward_node not in backward_visited:
-                backward_visited.append(backward_node)
-                backward_path = [backward_node] + backward_path
-#TODO: ESTE NÃO ESTÁ FEITO AINDA. FAZER ALTERAÇÕES PARECIDAS COM O DE CIMA E TESTAR
-                if backward_node == start or backward_node in forward_visited:
-                    intersection_node = backward_node if backward_node in forward_visited else None
-                    print(f"Int Node Back: {intersection_node}")
-                    print(f"For: {forward_visited}"
-                          f"Back: {backward_visited}")
-                    i = forward_path.index(intersection_node)
-                    path = forward_path[:i+1] + backward_path[:i][::-1]
-                    return forward_visited + backward_visited, path, cost
+    while forward_queue and backward_queue:
+        # Perform forward search
+        current_node = forward_queue.pop(0)
+        forward_visited.add(current_node)
 
-                backward_neighbors = graph[backward_node]
-                backward_queue.extend((neighbor, backward_path.copy(), cost + graph[backward_node][neighbor]['length']) for neighbor in backward_neighbors if neighbor not in backward_visited)
+        for neighbor in graph.neighbors(current_node):
+            if neighbor not in forward_visited:
+                forward_queue.append(neighbor)
+                forward_parent[neighbor] = current_node
 
-    return None
+            if neighbor in backward_visited:
+                intersection_node = neighbor
+                break
+
+        if intersection_node:
+            break
+
+        # Perform backward search
+        current_node = backward_queue.pop(0)
+        backward_visited.add(current_node)
+
+        for neighbor in graph.neighbors(current_node):
+            if neighbor not in backward_visited:
+                backward_queue.append(neighbor)
+                backward_parent[neighbor] = current_node
+
+            if neighbor in forward_visited:
+                intersection_node = neighbor
+                break
+
+        if intersection_node:
+            break
+
+    if intersection_node is None:
+        return [], [], 0  # No path found
+
+    # Reconstruct the path from start to end
+    path = []
+    current_node = intersection_node
+    while current_node is not None:
+        path.insert(0, current_node)
+        current_node = forward_parent[current_node]
+
+    # Reconstruct the path from end to start
+    current_node = backward_parent[intersection_node]
+    while current_node is not None:
+        path.append(current_node)
+        current_node = backward_parent[current_node]
+
+    return [], path, 0
