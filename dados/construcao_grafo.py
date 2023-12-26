@@ -59,4 +59,18 @@ for node, data in g_un_g.nodes(data=True):
 # fig.savefig("grafo.png", bbox_inches='tight')
 
 # Guarda o grafo em formato gml num ficheiro
-nx.write_gml(g_un_g, './dados/grafo.gml')
+nome_arquivo = './dados/grafo.gml'
+nx.write_gml(g_un_g, nome_arquivo)
+
+with open(nome_arquivo, 'r') as arquivo:
+    linhas = arquivo.readlines()
+
+# Procura a linha que contém a label e a altera
+for i, linha in enumerate(linhas):
+    if 'label "5379"\n' in linha:
+        linhas[i] = 'label "ORIGIN"\n'
+        break  # Para de procurar após encontrar a linha
+
+# Abre o arquivo para escrita, sobrescrevendo o conteúdo anterior
+with open(nome_arquivo, 'w') as arquivo:
+    arquivo.writelines(linhas)
