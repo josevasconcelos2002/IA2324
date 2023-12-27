@@ -189,8 +189,17 @@ class GUI:
 
         self.var_encomenda = tk.StringVar()
 
-        self.text_encomenda = tk.Text(self.frame_encomenda, height=1, width=20)
-        self.text_encomenda.pack(pady=10)
+        self.text_encomenda1 = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda1.pack(pady=10)
+
+        self.text_encomenda2 = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda2.pack(pady=10)
+
+        self.text_encomenda3 = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda3.pack(pady=10)
+
+        self.text_encomenda4 = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda4.pack(pady=10)
 
         self.btn_criar_encomenda = ttk.Button(self.frame_encomenda, text="Criar", command=self.save_encomenda)
         self.btn_criar_encomenda.pack()
@@ -199,19 +208,19 @@ class GUI:
         self.btn_sair_encomenda.pack(pady=10)
 
     def save_encomenda(self):
-        Idnt = self.text_encomenda.get(1.0, "end-1c")
-        Client = self.text_encomenda.get(2.0, "end-1c")
-        Origem = self.text_encomenda.get(3.0, "end-1c")
-        Destino = self.text_encomenda.get(4.0, "end-1c")
+        Idnt = self.text_encomenda1.get(1.0, "end-1c")
+        Client = self.text_encomenda2.get(1.0, "end-2c")
+        Origem = self.text_encomenda3.get(1.0, "end-3c")
+        Destino = self.text_encomenda4.get(1.0, "end-4c")
         if Client != '' and Origem != '' and Destino != '':
             self._encomendas.append(Encomenda(Idnt, Client, Origem, Destino))
             self.clean_encomenda_vars()
 
     def clean_encomenda_vars(self):
-        self.text_encomenda.delete("1.0", "end")
-        self.text_encomenda.delete("2.0", "end")
-        self.text_encomenda.delete("3.0", "end")
-        self.text_encomenda.delete("4.0", "end")
+        self.text_encomenda1.delete("1.0", "end")
+        self.text_encomenda2.delete("1.0", "end")
+        self.text_encomenda3.delete("1.0", "end")
+        self.text_encomenda4.delete("1.0", "end")
 
 
 
