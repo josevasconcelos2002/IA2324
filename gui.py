@@ -196,7 +196,7 @@ class GUI:
         Origem = self.text_encomenda.get(1.0, "end-1c")
         Destino = self.text_encomenda.get(1.0, "end-1c")
         if Client != '' and Origem != '' and Destino != '':
-            ENCOMENDAS.append(Encomenda(Idnt, Client, Origem, Destino))
+            self._encomendas.append(Encomenda(Idnt, Client, Origem, Destino))
             self.clean_encomenda_vars()
 
     def clean_encomenda_vars(self):
