@@ -215,9 +215,12 @@ class Application:
         self.frame_encomenda.pack(pady=50)
 
     def save_encomenda(self):
+        Idnt = self.text_encomenda.get(1.0, "end-1c")
         Client = self.text_encomenda.get(1.0, "end-1c")
-        if Client != '':
-            ENCOMENDAS.append(Encomenda(Client))
+        Origem = self.text_encomenda.get(1.0, "end-1c")
+        Destino = self.text_encomenda.get(1.0, "end-1c")
+        if Client != '' and Origem != '' and Destino != '':
+            ENCOMENDAS.append(Encomenda(Idnt, Client, Origem, Destino))
             self.clean_encomenda_vars()
 
     def clean_encomenda_vars(self):
