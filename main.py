@@ -179,6 +179,10 @@ class Application:
             algorithm = alg.iddfs
         elif escolha == "bidirectional":
             algorithm = alg.bidirectional
+        elif escolha == "greedy_search":
+            algorithm = alg.greedy_search
+        elif escolha == "astar_search":
+            algorithm = alg.astar_search    
         else:
             print("Escolha inválida.")
             return
