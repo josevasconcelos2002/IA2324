@@ -208,6 +208,7 @@ class GUI:
         self.btn_sair_encomenda.pack(pady=10)
 
     def save_encomenda(self):
+        #self.text_encomenda
         Idnt = self.text_encomenda1.get(1.0, "end-1c")
         Client = self.text_encomenda2.get(1.0, "end-2c")
         Origem = self.text_encomenda3.get(1.0, "end-3c")
