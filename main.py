@@ -1,3 +1,4 @@
+from multiprocessing.connection import Client
 import tkinter as tk
 from tkinter import ttk
 import networkx as nx
@@ -34,9 +35,13 @@ class Application:
             self.frame_menu_inicial, text='Criar estafeta', command=self.mostrar_estafeta)
         self.btn_criar_estafeta.pack(pady=10)
 
+        self.btn_criar_encomenda = ttk.Button(
+            self.frame_menu_inicial, text='Criar encomenda', command=self.mostrar_encomenda)
+        self.btn_criar_encomenda.pack(pady=20)
+
         self.btn_algoritmos = ttk.Button(
             self.frame_menu_inicial, text="Executar algoritmos", command=self.mostrar_algoritmos)
-        self.btn_algoritmos.pack(pady=20)
+        self.btn_algoritmos.pack(pady=30)
 
         # Inicialmente, ocultar o menu de escolha do algoritmo
         self.frame_algoritmos = ttk.Frame(root)
@@ -87,6 +92,17 @@ class Application:
         self.text_estafeta = tk.Text(self.frame_estafeta, height=1, width=20)
         self.text_estafeta.pack(pady=10)
 
+        self.frame_encomenda = ttk.Frame(root)
+        self.frame_encomenda.pack_forget()
+
+        self.enco_label = ttk.Label(self.frame_encomenda, text="Encomenda:")
+        self.enco_label.pack(pady=10)
+
+        self.var_encomenda = tk.StringVar()
+
+        self.text_encomenda = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda.pack(pady=10)
+
         self.var_vehiculo = tk.IntVar()
 
         self.radio_bicycle = ttk.Radiobutton(
@@ -108,6 +124,14 @@ class Application:
         self.btn_sair_estafeta = ttk.Button(
             self.frame_estafeta, text="Sair", command=self.mostrar_menu)
         self.btn_sair_estafeta.pack(pady=10)
+
+        self.btn_criar_encomenda = ttk.Button(
+            self.frame_encomenda, text="Criar encomenda", command=self.save_encomenda)
+        self.btn_criar_encomenda.pack()
+
+        self.btn_sair_encomenda = ttk.Button(
+            self.frame_encomenda, text="Sair", command=self.mostrar_menu)
+        self.btn_sair_encomenda.pack(pady=10)
 
     def mostrar_menu(self):
         # Esconder a tela de boas-vindas
@@ -174,6 +198,22 @@ class Application:
 
     def clean_estafeta_vars(self):
         self.text_estafeta.delete("1.0", "end")
+        self.var_vehiculo.set(0)
+
+    def mostrar_encomenda(self):
+        self.current_frame.pack_forget()
+        self.current_frame = self.frame_encomenda
+        self.clean_encomenda_vars()
+        self.frame_encomenda.pack(pady=50)
+
+    def save_encomenda(self):
+        Client = self.text_encomenda.get(1.0, "end-1c")
+        if Client != '':
+            ENCOMENDAS.append(Encomenda(Client))
+            self.clean_encomenda_vars()
+
+    def clean_encomenda_vars(self):
+        self.text_encomenda.delete("1.0", "end")
         self.var_vehiculo.set(0)
 
 
