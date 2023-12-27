@@ -114,9 +114,7 @@ def route(estafetas, sections, algoritmo, graph):
                 rating = 5
                 #Existe um tempo extra de 15 minutos
                 if time <= enc.deadline + extra_time:
-                    print(f"antes {estafeta_rating[section][0]}")
                     estafeta_rating[section][0] += 5
-                    print(f"depois {estafeta_rating[section][0]}")
                 else:
                     elapsed_time = time - (enc.deadline + extra_time)
                     #E retirado 0.1 ao rating por cada 5 minutos que ultrapassa o tempo, mas nunca fica menor que 0

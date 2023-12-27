@@ -1,6 +1,7 @@
 from collections import deque
 import heapq
 from enchaminhamento import aux_get
+import math
 
 
 def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=[]):
@@ -186,3 +187,92 @@ def bidirectional(graph, start_node, end_node):
         current_node = backward_parent[current_node]
 
     return [], path, 0
+
+def calculate_euclidean_distance_partial(lat1, lon1, x2, y2, z2):
+    R = 6371  # Raio do planeta
+
+    x1 = R * math.cos(lat1) * math.cos(lon1)
+    y1 = R * math.cos(lat1) * math.sin(lon1)
+    z1 = R * math.sin(lat1)
+
+    return math.sqrt(math.pow((x2 - x1), 2) + math.pow((y2 - y1), 2) + math.pow((z2 - z1), 2))
+
+def calculate_heuristics(graph, node):
+    heuristics = {node: 0}
+    nodes = graph.nodes(data=True)
+    n_lat = nodes[node]['x']
+    n_lon = nodes[node]['y']
+    R = 6371  # Raio do planeta
+    x2 = R * math.cos(n_lat) * math.cos(n_lon)
+    y2 = R * math.cos(n_lat) * math.sin(n_lon)
+    z2 = R * math.sin(n_lat)
+
+    for n, coord in nodes:
+        if n != node:
+            heuristics[n] = calculate_euclidean_distance_partial(coord['x'], coord['y'], x2, y2, z2)
+
+    return heuristics
+
+
+def greedy_search(graph, start_node, goal_node):
+    heuristics = calculate_heuristics(graph, goal_node)
+    # Priority queue to store nodes based on heuristic values
+    priority_queue = [(heuristics[start_node], start_node, [start_node])]
+    visited = set()
+
+    while priority_queue:
+        # Get the node with the minimum heuristic value and its path
+        current_heuristic, current_node, path = priority_queue.pop(0)
+
+        # Check if the goal node is reached
+        if current_node == goal_node:
+            return [], path, 0
+
+        # Mark the current node as visited
+        visited.add(current_node)
+
+        # Explore neighbors
+        for neighbor in graph.neighbors(current_node):
+            if neighbor not in visited:
+                # Add neighbors to the priority queue based on heuristic values
+                new_path = path + [neighbor]
+                priority_queue.append((heuristics[neighbor], neighbor, new_path))
+                priority_queue.sort()  # Sort based on heuristic values
+
+    return [], [], 0
+
+def astar_search(graph, start_node, goal_node):
+    heuristics = calculate_heuristics(graph, goal_node)
+    # Priority queue to store nodes based on the total cost (f-value)
+    priority_queue = [(heuristics[start_node], 0, start_node, [start_node])]
+    visited = set()
+
+    while priority_queue:
+        # Get the node with the minimum total cost (f-value) and its path
+        current_heuristic, current_cost, current_node, path = priority_queue.pop(0)
+
+        # Check if the goal node is reached
+        if current_node == goal_node:
+            return [], path, 0
+
+        # Mark the current node as visited
+        visited.add(current_node)
+
+        # Explore neighbors
+        for neighbor in graph[current_node]:
+            if neighbor not in visited:
+                # Calculate the cost for the neighbor node
+                edge_data = aux_get(graph[current_node][neighbor])
+                edge_length = edge_data['length'] if edge_data else 0
+                neighbor_cost = current_cost + edge_length
+
+                # Calculate the total cost (f-value) for the neighbor
+                total_cost = neighbor_cost + heuristics[neighbor]
+
+                # Add neighbors to the priority queue based on total cost
+                new_path = path + [neighbor]
+                priority_queue.append((total_cost, neighbor_cost, neighbor, new_path))
+                priority_queue.sort()  # Sort based on total cost
+
+    print(f"Goal node {goal_node} not reachable from {start_node}")
+    return [], [], 0

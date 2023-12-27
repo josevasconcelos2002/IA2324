@@ -1,10 +1,13 @@
+import sys
+
 from enchaminhamento import create_sections, sort_estafetas, sort_encomendas, route
 import networkx as nx
 from encomenda import Encomenda
 from random import randint
 from estafeta import Estafeta
-from algoritmos import dijkstra, bfs, dfs, iddfs, dfs_limit, bidirectional
+from algoritmos import dijkstra, bfs, dfs, iddfs, dfs_limit, bidirectional, greedy_search, astar_search
 import osmnx as ox
+import time
 
 g = nx.read_gml('./dados/grafo.gml')
 
@@ -30,9 +33,9 @@ for i in range(15):
 
 encomendas = sort_encomendas(g, encomendas)
 estafetas = sort_estafetas(estafetas)
-
+start_time = time.time()
 s = create_sections(encomendas, estafetas)
-
+"""
 t = 0
 p = 0
 for k, (l, w) in s.items():
@@ -47,8 +50,10 @@ for k, (l, w) in s.items():
         p = 0
 
 print(f"Para um total de {t} encomendas atribuidas")
-
-r, late = route(estafetas, s, dijkstra, g)
+"""
+algoritmo = dijkstra
+r, late = route(estafetas, s, algoritmo, g)
+total_time = time.time() - start_time
 print(r)
 print("Realizou route")
 
@@ -66,4 +71,8 @@ for estafeta, (rating, late_encomendas, n_encomendas) in late.items():
             , f"Rating: {format(rating / n_encomendas, '.1f')}\n", 'Encomendas atrasadas:\n']
         for enc, time in late_encomendas.items():
             lines.append(f"Encomenda {enc}: {time}\n")
+        lines.append(f"\n\nTempo de processamento: {total_time} segundos")
         f.writelines(lines)
+
+with open(f"./routes/informacao.txt", 'w') as f:
+    f.writelines([f"Algoritmo utilizado: {algoritmo.__name__}\n", f"Tempo de processamento: {format(total_time, '.2f')} s"])
