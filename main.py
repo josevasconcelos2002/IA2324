@@ -189,7 +189,7 @@ class Application:
 
         g = nx.read_gml('./dados/grafo.gml')
         est1 = Estafeta(1, 1)
-        enc1 = Encomenda(1, "Fabio", "3", "11", 3, 10)
+        enc1 = Encomenda(1, "Fabio", "3", "11")
 
         encomendas = [
             [i, f"Cliente_{i}", str(random.randint(1, 40)), str(

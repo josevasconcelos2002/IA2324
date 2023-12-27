@@ -1,5 +1,6 @@
 class Encomenda:
     def __init__(self, idnt, client, destination, weigth, deadline=0):
+        self.origin="1"
         self.idnt = idnt
         self.client = client
         self.destination = destination
