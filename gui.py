@@ -15,6 +15,7 @@ class GUI:
         self.root.geometry("500x500")
         self.current_frame = self.root
         self._estafetas = []
+        self._encomendas = []
 
         self.setup_tela_boas_vindas()
         self.setup_menu_inicial()
@@ -46,6 +47,10 @@ class GUI:
         self.btn_criar_estafeta = ttk.Button(self.frame_menu_inicial, text='Criar estafeta',
                                              command=self.show_menu_estafeta)
         self.btn_criar_estafeta.pack(pady=10)
+        
+        self.btn_criar_encomenda = ttk.Button(self.frame_menu_inicial, text='Criar encomenda',
+                                             command=self.show_menu_encomenda)
+        self.btn_criar_encomenda.pack(pady=10)
 
         self.btn_algoritmos = ttk.Button(self.frame_menu_inicial, text="Executar algoritmos",
                                          command=self.show_menu_algoritmos)
@@ -160,6 +165,40 @@ class GUI:
     def clean_estafeta_vars(self):
         self.text_estafeta.delete("1.0", "end")
         self.var_vehiculo.set(0)
+
+
+    def show_menu_encomenda(self):
+        self.current_frame.pack_forget()
+        self.current_frame = self.frame_encomenda
+        self.clean_encomenda_vars()
+        self.frame_encomenda.pack(pady=50)
+
+    def setup_menu_encomenda(self):
+        self.frame_encomenda = ttk.Frame(self.root)
+
+        self.enc_label = ttk.Label(self.frame_encomenda, text="Encomenda:")
+        self.enc_label.pack(pady=10)
+
+        self.var_encomenda = tk.StringVar()
+
+        self.text_encomenda = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda.pack(pady=10)
+
+        self.btn_criar_encomenda = ttk.Button(self.frame_encomenda, text="Criar", command=self.save_encomenda)
+        self.btn_criar_encomenda.pack()
+
+        self.btn_sair_encomenda = ttk.Button(self.frame_encomenda, text="Sair", command=self.show_menu_inicial)
+        self.btn_sair_encomenda.pack(pady=10)
+
+    def save_encomenda(self):
+        Client = self.text_encomenda.get(1.0, "end-1c")
+        if Client != '':
+            self._encomendas.append(Encomenda(Client))
+            self.clean_encomenda_vars()
+
+    def clean_encomenda_vars(self):
+        self.text_encomenda.delete("1.0", "end")
+
 
 
 '''
