@@ -73,6 +73,14 @@ class Application:
             self.frame_algoritmos, text="Bidirectional", variable=self.algoritmo_var, value="bidirectional")
         self.radio_bidirectional.pack()
 
+        self.radio_greedy = ttk.Radiobutton(self.frame_algoritmos, text="Greedy",
+                                                   variable=self.algoritmo_var, value="greedy_search")
+        self.radio_greedy.pack()
+
+        self.radio_astar = ttk.Radiobutton(self.frame_algoritmos, text="A*",
+                                                   variable=self.algoritmo_var, value="astar_search")
+        self.radio_astar.pack()
+
         self.btn_executar = ttk.Button(
             self.frame_algoritmos, text="Executar", command=self.executar_algoritmo)
         self.btn_executar.pack(pady=10)
