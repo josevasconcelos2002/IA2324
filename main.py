@@ -220,16 +220,18 @@ class Application:
 
     def save_encomenda(self):
         Idnt = self.text_encomenda.get(1.0, "end-1c")
-        Client = self.text_encomenda.get(1.0, "end-1c")
-        Origem = self.text_encomenda.get(1.0, "end-1c")
-        Destino = self.text_encomenda.get(1.0, "end-1c")
+        Client = self.text_encomenda.get(2.0, "end-1c")
+        Origem = self.text_encomenda.get(3.0, "end-1c")
+        Destino = self.text_encomenda.get(4.0, "end-1c")
         if Client != '' and Origem != '' and Destino != '':
             ENCOMENDAS.append(Encomenda(Idnt, Client, Origem, Destino))
             self.clean_encomenda_vars()
 
     def clean_encomenda_vars(self):
         self.text_encomenda.delete("1.0", "end")
-        self.var_vehiculo.set(0)
+        self.text_encomenda.delete("2.0", "end")
+        self.text_encomenda.delete("3.0", "end")
+        self.text_encomenda.delete("4.0", "end")
 
 
 if __name__ == "__main__":
