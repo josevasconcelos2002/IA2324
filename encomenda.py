@@ -1,14 +1,11 @@
 class Encomenda:
-    def __init__(self, idnt, client, destination, weigth, deadline=0):
-        self.origin="1"
+    def __init__(self, idnt, client, destination, weight, deadline=0):
         self.idnt = idnt
         self.client = client
+        self.weight = weight
         self.destination = destination
-        self.weigth = weigth
+        self.deadline = deadline
 
-    def criar_encomenda(idnt, client, destination, weigth, deadline=0):
-        origin = input(f"Digite a origem da encomenda: ")
-
-        encomenda = Encomenda(idnt, client, origin, destination, weigth, deadline)
-    
+    def criar_encomenda(self, idnt, client, destination, weigth, deadline=0):
+        encomenda = Encomenda(idnt, client, destination, weigth, deadline)
         return encomenda

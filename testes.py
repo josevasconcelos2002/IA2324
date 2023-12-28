@@ -4,12 +4,15 @@ from enchaminhamento import create_sections, sort_estafetas, sort_encomendas, ro
 import networkx as nx
 from encomenda import Encomenda
 from random import randint
+import random
 from estafeta import Estafeta
 from algoritmos import dijkstra, bfs, dfs, iddfs, dfs_limit, bidirectional, greedy_search, astar_search
 import osmnx as ox
 import time
 
 g = nx.read_gml('./dados/grafo.gml')
+for _,_, data in g.edges(data=True):
+    data['traffic'] = round(random.uniform(0.8, 1), 1)
 
 nodes = list(g.nodes(data=True))
 origin = str(nodes[0][0])
@@ -17,7 +20,7 @@ maximum = len(nodes) - 1
 encomendas = []
 for i in range(30):
     encomendas.append(Encomenda(
-        i, None, origin, nodes[randint(0, maximum)], randint(1, 2), None, 350))
+        i, None, nodes[randint(0, maximum)], randint(1, 2), 2400))
 
 estafetas = []
 vehicle = 0
@@ -57,6 +60,17 @@ total_time = time.time() - start_time
 print(r)
 print("Realizou route")
 
+
+def seconds_to_hours_minutes(seconds):
+    # Calculate hours and minutes
+    hours, remainder = divmod(seconds, 3600)
+    minutes, _ = divmod(remainder, 60)
+
+    # Create a formatted string
+    time_str = "{:02}:{:02}".format(int(hours), int(minutes))
+
+    return time_str
+
 for section, route in r.items():
     if len(route) == 1:
         ox.plot_graph_route(g, route[0], route_color='yellow', route_linewidth=6, node_size=0, route_alpha=1,
@@ -65,13 +79,12 @@ for section, route in r.items():
         ox.plot_graph_routes(g, route, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
                             show=False, save=True, filepath=f"./routes/section_{section}.png")
 
-for estafeta, (rating, late_encomendas, n_encomendas) in late.items():
+for estafeta, (t_rating, late_encomendas, n_encomendas) in late.items():
     with open(f"./routes/{estafeta}_relatorio.txt", 'w') as f:
         lines = [f"Estafeta: {estafeta}\n", f"Numero de encomendas: {n_encomendas}\n"
-            , f"Rating: {format(rating / n_encomendas, '.1f')}\n", 'Encomendas atrasadas:\n']
-        for enc, time in late_encomendas.items():
-            lines.append(f"Encomenda {enc}: {time}\n")
-        lines.append(f"\n\nTempo de processamento: {total_time} segundos")
+            , f"Rating: {format(t_rating / n_encomendas, '.2f')}\n", 'Encomendas atrasadas:\n']
+        for enc, (delay, rating) in late_encomendas.items():
+            lines.append(f"Encomenda {enc}: {seconds_to_hours_minutes(delay)} (rating: {rating})\n")
         f.writelines(lines)
 
 with open(f"./routes/informacao.txt", 'w') as f:

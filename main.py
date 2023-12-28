@@ -1,15 +1,18 @@
-from multiprocessing.connection import Client
 import tkinter as tk
 from tkinter import ttk
+
 import networkx as nx
-from estafeta import Estafeta
-from encomenda import Encomenda
+import osmnx as ox
+
 import algoritmos as alg
-import random
+from enchaminhamento import sort_encomendas, sort_estafetas, create_sections, route
+from encomenda import Encomenda
+from estafeta import Estafeta
+import time
 
 ENCOMENDAS = []
 ESTAFETAS = []
-
+GRAPH = nx.read_gml('./dados/grafo.gml')
 
 class Application:
     def __init__(self, root):
@@ -166,6 +169,17 @@ class Application:
         self.current_frame = self.frame_algoritmos
         self.frame_algoritmos.pack(pady=50)
 
+    @staticmethod
+    def seconds_to_hours_minutes(seconds):
+        # Calculate hours and minutes
+        hours, remainder = divmod(seconds, 3600)
+        minutes, _ = divmod(remainder, 60)
+
+        # Create a formatted string
+        time_str = "{:02}:{:02}".format(int(hours), int(minutes))
+
+        return time_str
+
     def executar_algoritmo(self):
         escolha = self.algoritmo_var.get()
 
@@ -187,22 +201,34 @@ class Application:
             print("Escolha inválida.")
             return
 
-        g = nx.read_gml('./dados/grafo.gml')
-        est1 = Estafeta(1, 1)
-        enc1 = Encomenda(1, "Fabio", "3", "11")
+        encomendas = sort_encomendas(GRAPH, ENCOMENDAS)
+        estafetas = sort_estafetas(ESTAFETAS)
+        start_time = time.time()
+        s = create_sections(encomendas, estafetas)
 
-        encomendas = [
-            [i, f"Cliente_{i}", str(random.randint(1, 40)), str(
-                random.randint(1, 40)), random.randint(1, 10), random.randint(1, 10)]
-            for i in range(1, 101)
-        ]
+        r, late = route(estafetas, s, algorithm, GRAPH)
+        total_time = time.time() - start_time
+        print("Realizou route")
 
-        visited, path, cost = algorithm(g, enc1.origin, enc1.destination)
+        for section, rota in r.items():
+            if len(rota) == 1:
+                ox.plot_graph_route(GRAPH, rota[0], route_color='yellow', route_linewidth=6, node_size=0, route_alpha=1,
+                                    show=False, save=True, filepath=f"./routes/section_{section}.png")
+            else:
+                ox.plot_graph_routes(GRAPH, rota, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
+                                     show=False, save=True, filepath=f"./routes/section_{section}.png")
 
-        print(f"Resultado do algoritmo escolhido:")
-        print(f"Visited: {visited}")
-        print(f"Path: {path}")
-        print(f"Cost: {cost} m")
+        for estafeta, (t_rating, late_encomendas, n_encomendas) in late.items():
+            with open(f"./routes/{estafeta}_relatorio.txt", 'w') as f:
+                lines = [f"Estafeta: {estafeta}\n", f"Numero de encomendas: {n_encomendas}\n"
+                    , f"Rating: {format(t_rating / n_encomendas, '.2f')}\n", 'Encomendas atrasadas:\n']
+                for enc, (delay, rating) in late_encomendas.items():
+                    lines.append(f"Encomenda {enc}: {self.seconds_to_hours_minutes(delay)} (rating: {rating})\n")
+                f.writelines(lines)
+
+        with open(f"./routes/informacao.txt", 'w') as f:
+            f.writelines([f"Algoritmo utilizado: {escolha}\n",
+                          f"Tempo de processamento: {format(total_time, '.2f')} s"])
 
     def mostrar_estafeta(self):
         self.current_frame.pack_forget()
