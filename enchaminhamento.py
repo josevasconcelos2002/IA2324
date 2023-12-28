@@ -40,7 +40,6 @@ def create_sections(encomendas, estafetas):
                     enc2 = encomendas[j]
                     dist = calculate_euclidean_distance(enc.destination[1]['x'], enc.destination[1]['y'],
                                                         enc2.destination[1]['x'], enc2.destination[1]['y'])
-                    print('dist = ' + str(dist))
                     if dist <= radius and cur_weight + enc2.weight <= max_weight:
                         if enc not in used:
                             used.append(enc)
@@ -70,10 +69,7 @@ def create_sections(encomendas, estafetas):
                     chosen_sec = k
         sections[chosen_sec] = (sections[chosen_sec][0] + [enc], sections[chosen_sec][1] + enc.weight)
         sectioned.append(enc)
-    sectionless = [enc for enc in sectionless if enc not in sectioned]
     used += sectioned
-    print(f"THERE ARE {len(sectionless)} SECTIONLESS")
-    print(f"THERE ARE {len(used)} USED")
     return sections
 
 
@@ -110,37 +106,36 @@ def route(estafetas, sections, algoritmo, graph):
         t_weight = 0
         for enc in encomendas:
             t_weight += enc.weight
-        for enc in encomendas:
-            #Soma dos ratings, dicionario encomendas atrasas e qual o tempo atrasado, n# de encomendas associadas
-            if enc not in visited_deliveries:
-                _, path, _ = algoritmo(graph, origin, str(enc.destination[0]))
-                time += calculate_delivery_time(path, vehicle, t_weight, graph)
-                #Existe um tempo extra de 15 minutos
-
-                if time <= enc.deadline + extra_time:
-                    estafeta_rating[section][0] += 5
-                else:
-                    elapsed_time = time - enc.deadline
-                    #E retirado 0.1 ao rating por cada 5 minutos que ultrapassa o tempo, mas nunca fica menor que 0
-                    five_minutes, _ = divmod(elapsed_time, 300)
-                    rating = 5 - 0.1 * five_minutes
-                    print(f"time = {time}, enc.deadline = {enc.deadline}, for {section}, 5 {five_minutes}, elapsed {elapsed_time}, rating {rating}")
-                    if rating < 0:
-                        rating = 0
-                    estafeta_rating[section][0] += rating
-                    estafeta_rating[section][1][enc.idnt] = (elapsed_time, rating)
-                origin = str(enc.destination[0])
-                visited_deliveries.append(enc)
-                if section not in assigned_encomendas.keys():
-                    assigned_encomendas[section] = []
-                assigned_encomendas[section].append(path)
-                t_weight -= enc.weight
+        with open(f"Resultados/Visitados/{section}_visitados.txt", 'w') as f:
+            for enc in encomendas:
+                #Soma dos ratings, dicionario encomendas atrasas e qual o tempo atrasado, n# de encomendas associadas
+                if enc not in visited_deliveries:
+                    visited, path, cost = algoritmo(graph, origin, str(enc.destination[0]))
+                    f.write(str(visited) + '\n')
+                    time += calculate_delivery_time(path, vehicle, t_weight, graph)
+                    #Existe um tempo extra de 15 minutos
+                    if time <= enc.deadline + extra_time:
+                        estafeta_rating[section][0] += 5
+                    else:
+                        elapsed_time = time - enc.deadline
+                        #E retirado 0.1 ao rating por cada 5 minutos que ultrapassa o tempo, mas nunca fica menor que 0
+                        five_minutes, _ = divmod(elapsed_time, 300)
+                        rating = 5 - 0.1 * five_minutes
+                        if rating < 0:
+                            rating = 0
+                        estafeta_rating[section][0] += rating
+                        estafeta_rating[section][1][enc.idnt] = (elapsed_time, rating)
+                    origin = str(enc.destination[0])
+                    visited_deliveries.append(enc)
+                    if section not in assigned_encomendas.keys():
+                        assigned_encomendas[section] = {'path': [], 'cost': 0}
+                    assigned_encomendas[section]['path'].append(path)
+                    assigned_encomendas[section]['cost'] += cost
+                    t_weight -= enc.weight
     return assigned_encomendas, estafeta_rating
-
 
 # Calcula o tempo de entregar uma encomenda
 def calculate_delivery_time(path, vehicle, weight, graph):
-    decr = 0
     if vehicle.value['type'] == 1:
         decr = 0.1
     elif vehicle.value['type'] == 2:

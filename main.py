@@ -5,10 +5,12 @@ import networkx as nx
 import osmnx as ox
 
 import algoritmos as alg
-from enchaminhamento import sort_encomendas, sort_estafetas, create_sections, route
+from enchaminhamento import sort_encomendas, sort_estafetas, create_sections, route, calculate_euclidean_distance
 from encomenda import Encomenda
 from estafeta import Estafeta
+
 import time
+from random import randint
 
 ENCOMENDAS = []
 ESTAFETAS = []
@@ -41,6 +43,10 @@ class Application:
         self.btn_criar_encomenda = ttk.Button(
             self.frame_menu_inicial, text='Criar encomenda', command=self.mostrar_encomenda)
         self.btn_criar_encomenda.pack(pady=20)
+
+        self.btn_gerar_automatico = ttk.Button(
+            self.frame_menu_inicial, text='Gerar automaticamente', command=self.mostar_gerar)
+        self.btn_gerar_automatico.pack(pady=20)
 
         self.btn_algoritmos = ttk.Button(
             self.frame_menu_inicial, text="Executar algoritmos", command=self.mostrar_algoritmos)
@@ -153,6 +159,63 @@ class Application:
             self.frame_encomenda, text="Sair", command=self.mostrar_menu)
         self.btn_sair_encomenda.pack(pady=10)
 
+        # Gerar automaticamente
+        self.frame_gerar = ttk.Frame(root)
+        self.frame_gerar.pack_forget()
+
+        self.gerar_label = ttk.Label(self.frame_gerar, text="Número de estafetas")
+        self.gerar_label.pack(pady=10)
+
+        self.text_n_estafetas = tk.Text(self.frame_gerar, height=1, width=20)
+        self.text_n_estafetas.pack(pady=10)
+
+        self.gerar_label = ttk.Label(self.frame_gerar, text="Número de encomendas")
+        self.gerar_label.pack(pady=10)
+
+        self.text_n_encomendas = tk.Text(self.frame_gerar, height=1, width=20)
+        self.text_n_encomendas.pack(pady=10)
+
+        self.label_gerar_algoritmos = ttk.Label(self.frame_gerar, text="Escolha o algoritmo:")
+        self.label_gerar_algoritmos.pack(pady=10)
+
+        self.algoritmo_gerar_var = tk.StringVar()
+
+        self.radio_dfs_gerar = ttk.Radiobutton(
+            self.frame_gerar, text="DFS", variable=self.algoritmo_gerar_var, value="dfs")
+        self.radio_dfs_gerar.pack()
+
+        self.radio_bfs_gerar = ttk.Radiobutton(
+            self.frame_gerar, text="BFS", variable=self.algoritmo_gerar_var, value="bfs")
+        self.radio_bfs_gerar.pack()
+
+        self.radio_dijkstra_gerar = ttk.Radiobutton(
+            self.frame_gerar, text="Dijkstra", variable=self.algoritmo_gerar_var, value="dijkstra")
+        self.radio_dijkstra_gerar.pack()
+
+        self.radio_iddfs_gerar = ttk.Radiobutton(
+            self.frame_gerar, text="IDDFS", variable=self.algoritmo_gerar_var, value="iddfs")
+        self.radio_iddfs_gerar.pack()
+
+        self.radio_bidirectional_gerar = ttk.Radiobutton(
+            self.frame_gerar, text="Bidirectional", variable=self.algoritmo_gerar_var, value="bidirectional")
+        self.radio_bidirectional_gerar.pack()
+
+        self.radio_greedy_gerar = ttk.Radiobutton(self.frame_gerar, text="Greedy",
+                                            variable=self.algoritmo_gerar_var, value="greedy_search")
+        self.radio_greedy_gerar.pack()
+
+        self.radio_astar_gerar = ttk.Radiobutton(self.frame_gerar, text="A*",
+                                           variable=self.algoritmo_gerar_var, value="astar_search")
+        self.radio_astar_gerar.pack()
+
+        self.btn_executar_gerar = ttk.Button(
+            self.frame_gerar, text="Executar", command=self.executar_algoritmo_automatico)
+        self.btn_executar_gerar.pack(pady=10)
+
+        self.btn_sair_gerar = ttk.Button(
+            self.frame_gerar, text="Sair", command=self.mostrar_menu)
+        self.btn_sair_gerar.pack(pady=10)
+
     def mostrar_menu(self):
         # Esconder a tela de boas-vindas
         self.logo_label.pack_forget()
@@ -180,8 +243,51 @@ class Application:
 
         return time_str
 
-    def executar_algoritmo(self):
-        escolha = self.algoritmo_var.get()
+    def executar_algoritmo_automatico(self):
+        n_estafetas = self.text_n_estafetas.get(1.0, "end-1c")
+        n_encomendas = self.text_n_encomendas.get(1.0, "end-1c")
+        if not n_estafetas.isdigit() or not n_encomendas.isdigit():
+            return
+        n_estafetas = int(n_estafetas)
+        n_encomendas = int(n_encomendas)
+
+        #Tenta criar uma distribuição equilibrada de estafetas por vehiculo
+        estafetas = []
+        third, remainder = divmod(n_estafetas, 3)
+        vehicles = [3] * third + [2] * third + [1] * third
+        for _ in range(remainder):
+            vehicles.append(1)
+        for i in range(n_estafetas):
+            estafetas.append(Estafeta(i, vehicles[i]))
+
+        encomendas = []
+        nodes = GRAPH.nodes(data=True)
+        maximum = len(nodes) - 1
+        o_x = nodes['ORIGIN']['x']
+        o_y = nodes['ORIGIN']['y']
+        nodes_l = list(nodes)
+        for i in range(n_encomendas):
+            destination = nodes_l[randint(0, maximum)]
+            while destination[0] == 5379:
+                destination = nodes_l[randint(0, maximum)]
+            dest_node = nodes[destination[0]]
+            #A deadline é calculada através da distancia euclidiana até à origem, é a média do tempo de deslocação a 45km/h, em segundos
+            o_dist = calculate_euclidean_distance(o_x, o_y, dest_node['x'], dest_node['y'])
+            deadline = (o_dist / 45) * 3600
+            encomendas.append(Encomenda(
+                i, None, destination, randint(1, 2), deadline))
+        self.executar_algoritmo(estafetas, encomendas, self.algoritmo_gerar_var.get())
+
+    def executar_algoritmo(self, estafetas=None, encomendas=None, escolha=''):
+        if encomendas is None:
+            encomendas = ENCOMENDAS
+        if estafetas is None:
+            estafetas = ESTAFETAS
+        if len(encomendas) == 0 or len(estafetas) == 0:
+            return
+
+        if escolha == '':
+            escolha = self.algoritmo_var.get()
 
         if escolha == "dfs":
             algorithm = alg.dfs
@@ -201,34 +307,45 @@ class Application:
             print("Escolha inválida.")
             return
 
-        encomendas = sort_encomendas(GRAPH, ENCOMENDAS)
-        estafetas = sort_estafetas(ESTAFETAS)
+        print("A executar...")
+        encomendas = sort_encomendas(GRAPH, encomendas)
+        estafetas = sort_estafetas(estafetas)
         start_time = time.time()
         s = create_sections(encomendas, estafetas)
+        print('Secções criadas')
 
         r, late = route(estafetas, s, algorithm, GRAPH)
         total_time = time.time() - start_time
-        print("Realizou route")
-
-        for section, rota in r.items():
-            if len(rota) == 1:
-                ox.plot_graph_route(GRAPH, rota[0], route_color='yellow', route_linewidth=6, node_size=0, route_alpha=1,
-                                    show=False, save=True, filepath=f"./routes/section_{section}.png")
-            else:
-                ox.plot_graph_routes(GRAPH, rota, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
-                                     show=False, save=True, filepath=f"./routes/section_{section}.png")
-
+        print("Rotas calculadas")
         for estafeta, (t_rating, late_encomendas, n_encomendas) in late.items():
-            with open(f"./routes/{estafeta}_relatorio.txt", 'w') as f:
+            with open(f"Resultados/Estafetas/{estafeta}_relatorio.txt", 'w') as f:
                 lines = [f"Estafeta: {estafeta}\n", f"Numero de encomendas: {n_encomendas}\n"
                     , f"Rating: {format(t_rating / n_encomendas, '.2f')}\n", 'Encomendas atrasadas:\n']
                 for enc, (delay, rating) in late_encomendas.items():
                     lines.append(f"Encomenda {enc}: {self.seconds_to_hours_minutes(delay)} (rating: {rating})\n")
                 f.writelines(lines)
 
-        with open(f"./routes/informacao.txt", 'w') as f:
+        for section, v in r.items():
+            rota = v['path']
+            custo = v['cost']
+            if len(rota) == 1:
+                ox.plot_graph_route(GRAPH, rota[0], route_color='yellow', route_linewidth=6, node_size=0, route_alpha=1,
+                                    show=False, save=True, filepath=f"Resultados/Rotas/section_{section}.png")
+            else:
+                ox.plot_graph_routes(GRAPH, rota, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
+                                     show=False, save=True, filepath=f"Resultados/Rotas/section_{section}.png")
+            print(f"Rota de estafeta {section}:")
+            with open(f"Resultados/Estafetas/{section}_relatorio.txt", 'a') as f:
+                lines = [f"\n\nCusto total: {custo}\n", 'Rotas:']
+                for r in rota:
+                    lines.append(str(r))
+                f.writelines(lines)
+
+        with open(f"Resultados/informacao.txt", 'w') as f:
             f.writelines([f"Algoritmo utilizado: {escolha}\n",
                           f"Tempo de processamento: {format(total_time, '.2f')} s"])
+        print("Execução completa. Verifique os dados na pasta Resultados.")
+
 
     def mostrar_estafeta(self):
         self.current_frame.pack_forget()
@@ -252,6 +369,17 @@ class Application:
         self.current_frame = self.frame_encomenda
         self.clean_encomenda_vars()
         self.frame_encomenda.pack(pady=50)
+
+    def clean_gerar_vars(self):
+        self.text_n_estafetas.delete("1.0", "end")
+        self.text_n_encomendas.delete("1.0", "end")
+        self.algoritmo_gerar_var.set('')
+
+    def mostar_gerar(self):
+        self.current_frame.pack_forget()
+        self.current_frame = self.frame_gerar
+        self.clean_gerar_vars()
+        self.frame_gerar.pack(pady=50)
 
     def save_encomenda(self):
         #self.text_encomenda

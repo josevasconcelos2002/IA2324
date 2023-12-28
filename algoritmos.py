@@ -4,7 +4,9 @@ from enchaminhamento import aux_get
 import math
 
 
-def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=[]):
+def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=None):
+    if visited_list is None:
+        visited_list = []
     if visited is None:
         visited = set()
     if path is None:
@@ -40,9 +42,8 @@ def bfs(graph, start, end):
             visited.add(current_node)
             visited_list.append(current_node)
             path = path + [current_node]
-
             if current_node == end:
-                # Calculate the sum of edge costs along the path
+                # Calcula o custo do caminho
                 cost = sum(aux_get(graph[path[i]][path[i + 1]])["length"] for i in range(len(path) - 1))
                 return visited_list, path, round(cost, 2)
 
@@ -83,8 +84,6 @@ def dijkstra(graph, start, end):
                        lengths[node] + aux_get(graph[current][node])["length"] == lengths[current]),
                       key=lambda x: aux_get(graph[current][x])["length"])
 
-    path.insert(0, start)
-
     return visited, path, round(lengths[end], 2)
 
 
@@ -97,7 +96,9 @@ def iddfs(graph, start, end, max_depth=2**31-1):
     return None
 
 
-def dfs_limit(graph, start, end, depth, visited=None, cost=0, path=None, visited_list=[]):
+def dfs_limit(graph, start, end, depth, visited=None, cost=0, path=None, visited_list=None):
+    if visited_list is None:
+        visited_list = []
     if visited is None:
         visited = set()
     if path is None:
@@ -121,7 +122,6 @@ def dfs_limit(graph, start, end, depth, visited=None, cost=0, path=None, visited
 
     return None
 
-
 def bidirectional(graph, start_node, end_node):
     if start_node == end_node:
         return [], [start_node], 0
@@ -137,8 +137,12 @@ def bidirectional(graph, start_node, end_node):
 
     intersection_node = None
 
+    # Inicializa os custos cumulativos para as buscas
+    forward_costs = {start_node: 0}
+    backward_costs = {end_node: 0}
+
     while forward_queue and backward_queue:
-        # Perform forward search
+        # Procura da origem ao fim
         current_node = forward_queue.pop(0)
         forward_visited.add(current_node)
 
@@ -147,6 +151,9 @@ def bidirectional(graph, start_node, end_node):
                 forward_queue.append(neighbor)
                 forward_parent[neighbor] = current_node
 
+                # Atualiza o custo cumulativo
+                forward_costs[neighbor] = forward_costs[current_node] + graph.cost(current_node, neighbor)
+
             if neighbor in backward_visited:
                 intersection_node = neighbor
                 break
@@ -154,7 +161,7 @@ def bidirectional(graph, start_node, end_node):
         if intersection_node:
             break
 
-        # Perform backward search
+        # Procura do fim à origem
         current_node = backward_queue.pop(0)
         backward_visited.add(current_node)
 
@@ -162,6 +169,9 @@ def bidirectional(graph, start_node, end_node):
             if neighbor not in backward_visited:
                 backward_queue.append(neighbor)
                 backward_parent[neighbor] = current_node
+
+                # Atualiza o custo cumulativo
+                backward_costs[neighbor] = backward_costs[current_node] + graph.cost(current_node, neighbor)
 
             if neighbor in forward_visited:
                 intersection_node = neighbor
@@ -171,22 +181,28 @@ def bidirectional(graph, start_node, end_node):
             break
 
     if intersection_node is None:
-        return [], [], 0  # No path found
+        return [], [], 0  # Nenhum caminho encontrado
 
-    # Reconstruct the path from start to end
+    # Reconstroi o caminho e calcule o custo total
     path = []
     current_node = intersection_node
+    total_cost = 0
+    visited_nodes = list(forward_visited.union(backward_visited))
+
     while current_node is not None:
         path.insert(0, current_node)
+        total_cost += forward_costs[current_node]
         current_node = forward_parent[current_node]
 
-    # Reconstruct the path from end to start
     current_node = backward_parent[intersection_node]
     while current_node is not None:
         path.append(current_node)
+        total_cost += backward_costs[current_node]
         current_node = backward_parent[current_node]
 
-    return [], path, 0
+    return visited_nodes, path, total_cost
+
+
 
 def calculate_euclidean_distance_partial(lat1, lon1, x2, y2, z2):
     R = 6371  # Raio do planeta
@@ -216,63 +232,62 @@ def calculate_heuristics(graph, node):
 
 def greedy_search(graph, start_node, goal_node):
     heuristics = calculate_heuristics(graph, goal_node)
-    # Priority queue to store nodes based on heuristic values
     priority_queue = [(heuristics[start_node], start_node, [start_node])]
     visited = set()
 
     while priority_queue:
-        # Get the node with the minimum heuristic value and its path
-        current_heuristic, current_node, path = priority_queue.pop(0)
+        # Pega no nodo com menor heuristica e o seu caminho
+        current_heuristic, current_cost, current_node, path = priority_queue.pop(0)
 
-        # Check if the goal node is reached
+        # Vê se chegou ao fim
         if current_node == goal_node:
-            return [], path, 0
+            return visited, path, current_cost
 
-        # Mark the current node as visited
+        # Marca o nodo atual como visitado
         visited.add(current_node)
 
-        # Explore neighbors
+        # Explorar vizinhos
         for neighbor in graph.neighbors(current_node):
             if neighbor not in visited:
-                # Add neighbors to the priority queue based on heuristic values
+                # Adiciona vizinhos à queue e ordena por heuristica
                 new_path = path + [neighbor]
-                priority_queue.append((heuristics[neighbor], neighbor, new_path))
-                priority_queue.sort()  # Sort based on heuristic values
+                edge_data = aux_get(graph[current_node][neighbor])
+                neighbor_cost = current_cost + edge_data['length'] if edge_data else 0
+                priority_queue.append((heuristics[neighbor], neighbor_cost, neighbor, new_path))
+                priority_queue.sort()
 
     return [], [], 0
 
 def astar_search(graph, start_node, goal_node):
     heuristics = calculate_heuristics(graph, goal_node)
-    # Priority queue to store nodes based on the total cost (f-value)
     priority_queue = [(heuristics[start_node], 0, start_node, [start_node])]
     visited = set()
 
     while priority_queue:
-        # Get the node with the minimum total cost (f-value) and its path
+        # Pega no nodo com menor custo total (custo + heuristica)
         current_heuristic, current_cost, current_node, path = priority_queue.pop(0)
 
-        # Check if the goal node is reached
+        # Verifica se chegou ao fim
         if current_node == goal_node:
-            return [], path, 0
+            return visited, path, current_cost
 
-        # Mark the current node as visited
+        # Marca o nodo atual como visitado
         visited.add(current_node)
 
-        # Explore neighbors
+        # Explorar vizinhos
         for neighbor in graph[current_node]:
             if neighbor not in visited:
-                # Calculate the cost for the neighbor node
+                # Calcula o custo do vizinho
                 edge_data = aux_get(graph[current_node][neighbor])
                 edge_length = edge_data['length'] if edge_data else 0
                 neighbor_cost = current_cost + edge_length
 
-                # Calculate the total cost (f-value) for the neighbor
+                # Adiciona custo e heuristica
                 total_cost = neighbor_cost + heuristics[neighbor]
 
-                # Add neighbors to the priority queue based on total cost
+                # Adiciona vizinho à queue e ordena por menor custo total
                 new_path = path + [neighbor]
                 priority_queue.append((total_cost, neighbor_cost, neighbor, new_path))
-                priority_queue.sort()  # Sort based on total cost
+                priority_queue.sort()
 
-    print(f"Goal node {goal_node} not reachable from {start_node}")
     return [], [], 0

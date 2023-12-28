@@ -11,9 +11,6 @@ import osmnx as ox
 import time
 
 g = nx.read_gml('./dados/grafo.gml')
-for _,_, data in g.edges(data=True):
-    data['traffic'] = round(random.uniform(0.8, 1), 1)
-
 nodes = list(g.nodes(data=True))
 origin = str(nodes[0][0])
 maximum = len(nodes) - 1
