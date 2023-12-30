@@ -334,7 +334,6 @@ class Application:
             else:
                 ox.plot_graph_routes(GRAPH, rota, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
                                      show=False, save=True, filepath=f"Resultados/Rotas/section_{section}.png")
-            print(f"Rota de estafeta {section}:")
             with open(f"Resultados/Estafetas/{section}_relatorio.txt", 'a') as f:
                 lines = [f"\n\nCusto total: {custo}\n", 'Rotas:']
                 for r in rota:
