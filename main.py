@@ -16,6 +16,22 @@ ENCOMENDAS = []
 ESTAFETAS = []
 GRAPH = nx.read_gml('./dados/grafo.gml')
 
+
+def get_vehicle(est_id, list_e):
+    estafeta = None
+    for est in list_e:
+        if est.idnt == str(est_id):
+            estafeta = est
+            break
+    if estafeta.vehicle.value['type'] == 1:
+        v = 'Carro'
+    elif estafeta.vehicle.value['type'] == 2:
+        v = 'Mota'
+    else:
+        v = 'Bicicleta'
+    return v
+
+
 class Application:
     def __init__(self, root):
         self.root = root
@@ -258,7 +274,7 @@ class Application:
         for _ in range(remainder):
             vehicles.append(1)
         for i in range(n_estafetas):
-            estafetas.append(Estafeta(i, vehicles[i]))
+            estafetas.append(Estafeta(str(i), vehicles[i]))
 
         encomendas = []
         nodes = GRAPH.nodes(data=True)
@@ -273,7 +289,7 @@ class Application:
             dest_node = nodes[destination[0]]
             #A deadline é calculada através da distancia euclidiana até à origem, é a média do tempo de deslocação a 45km/h, em segundos
             o_dist = calculate_euclidean_distance(o_x, o_y, dest_node['x'], dest_node['y'])
-            deadline = (o_dist / 45) * 3600
+            deadline = (o_dist / 100) * 3600
             encomendas.append(Encomenda(
                 i, None, destination, randint(1, 2), deadline))
         self.executar_algoritmo(estafetas, encomendas, self.algoritmo_gerar_var.get())
@@ -319,7 +335,8 @@ class Application:
         print("Rotas calculadas")
         for estafeta, (t_rating, late_encomendas, n_encomendas) in late.items():
             with open(f"Resultados/Estafetas/{estafeta}_relatorio.txt", 'w') as f:
-                lines = [f"Estafeta: {estafeta}\n", f"Numero de encomendas: {n_encomendas}\n"
+                lines = [f"Estafeta: {estafeta}\n", f"Vehículo: {get_vehicle(estafeta, estafetas)}\n",
+                         f"Numero de encomendas: {n_encomendas}\n"
                     , f"Rating: {format(t_rating / n_encomendas, '.2f')}\n", 'Encomendas atrasadas:\n']
                 for enc, (delay, rating) in late_encomendas.items():
                     lines.append(f"Encomenda {enc}: {self.seconds_to_hours_minutes(delay)} (rating: {rating})\n")
@@ -344,7 +361,6 @@ class Application:
             f.writelines([f"Algoritmo utilizado: {escolha}\n",
                           f"Tempo de processamento: {format(total_time, '.2f')} s"])
         print("Execução completa. Verifique os dados na pasta Resultados.")
-
 
     def mostrar_estafeta(self):
         self.current_frame.pack_forget()
