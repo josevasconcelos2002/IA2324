@@ -4,30 +4,25 @@ from enchaminhamento import aux_get
 import math
 
 
-def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=None):
-    if visited_list is None:
-        visited_list = []
-    if visited is None:
-        visited = set()
-    if path is None:
-        path = []
+def dfs(graph, start, end):
+    stack = [(start, [start], 0, set())]
 
-    visited.add(start)
-    visited_list.append(start)
-    path = path + [start]
+    while stack:
+        current, path, cost, visited = stack.pop()
 
-    if start == end:
-        return visited_list, path, round(cost, 2)
+        if current == end:
+            return visited, path, round(cost, 2)
 
-    for neighbor in graph.neighbors(start):
-        if neighbor not in visited:
-            edge_cost = aux_get(graph[start][neighbor])["length"]
-            updated_cost = cost + edge_cost
-            result = dfs(graph, neighbor, end, visited, updated_cost, path, visited_list)
-            if result:
-                return result
+        visited.add(current)
+
+        for neighbor in graph.neighbors(current):
+            if neighbor not in visited:
+                edge_cost = aux_get(graph[current][neighbor])["length"]
+                updated_cost = cost + edge_cost
+                stack.append((neighbor, path + [neighbor], updated_cost, visited))
 
     return None
+
 
 
 def bfs(graph, start, end):
@@ -140,7 +135,6 @@ def bidirectional(graph, start_node, end_node):
     # Inicializa os custos cumulativos para as buscas
     forward_costs = {start_node: 0}
     backward_costs = {end_node: 0}
-
     while forward_queue and backward_queue:
         # Procura da origem ao fim
         current_node = forward_queue.pop(0)
@@ -152,7 +146,7 @@ def bidirectional(graph, start_node, end_node):
                 forward_parent[neighbor] = current_node
 
                 # Atualiza o custo cumulativo
-                forward_costs[neighbor] = forward_costs[current_node] + graph.cost(current_node, neighbor)
+                forward_costs[neighbor] = forward_costs[current_node] + aux_get(graph[current_node][neighbor])['length']
 
             if neighbor in backward_visited:
                 intersection_node = neighbor
@@ -171,7 +165,7 @@ def bidirectional(graph, start_node, end_node):
                 backward_parent[neighbor] = current_node
 
                 # Atualiza o custo cumulativo
-                backward_costs[neighbor] = backward_costs[current_node] + graph.cost(current_node, neighbor)
+                backward_costs[neighbor] = backward_costs[current_node] + aux_get(graph[current_node][neighbor])['length']
 
             if neighbor in forward_visited:
                 intersection_node = neighbor
@@ -232,7 +226,7 @@ def calculate_heuristics(graph, node):
 
 def greedy_search(graph, start_node, goal_node):
     heuristics = calculate_heuristics(graph, goal_node)
-    priority_queue = [(heuristics[start_node], start_node, [start_node])]
+    priority_queue = [(heuristics[start_node], 0, start_node, [start_node])]
     visited = set()
 
     while priority_queue:
