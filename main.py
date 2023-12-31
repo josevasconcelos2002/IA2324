@@ -1,13 +1,8 @@
 import tkinter as tk
 
 import networkx as nx
-import osmnx as ox
-
-from enchaminhamento import sort_encomendas, sort_estafetas, create_sections, route, calculate_euclidean_distance
 
 import gui as gui
-
-from random import randint
 
 ENCOMENDAS = []
 ESTAFETAS = []
@@ -20,4 +15,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

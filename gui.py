@@ -5,6 +5,7 @@ import time
 
 import algoritmos as alg
 import networkx as nx
+import osmnx as ox
 from estafeta import Estafeta
 from encomenda import Encomenda
 from enchaminhamento import sort_encomendas, sort_estafetas, create_sections, route, calculate_euclidean_distance
@@ -14,6 +15,19 @@ ENCOMENDAS = []
 ESTAFETAS = []
 GRAPH = nx.read_gml('./dados/grafo.gml')
 
+def get_vehicle(est_id, list_e):
+    estafeta = None
+    for est in list_e:
+        if est.idnt == str(est_id):
+            estafeta = est
+            break
+    if estafeta.vehicle.value['type'] == 1:
+        v = 'Carro'
+    elif estafeta.vehicle.value['type'] == 2:
+        v = 'Mota'
+    else:
+        v = 'Bicicleta'
+    return v
 
 class GUI:
     def __init__(self, root):
@@ -109,7 +123,7 @@ class GUI:
         for _ in range(remainder):
             vehicles.append(1)
         for i in range(n_estafetas):
-            estafetas.append(Estafeta(i, vehicles[i]))
+            estafetas.append(Estafeta(str(i), vehicles[i]))
 
         encomendas = []
         nodes = GRAPH.nodes(data=True)
@@ -122,9 +136,9 @@ class GUI:
             while destination[0] == 5379:
                 destination = nodes_l[randint(0, maximum)]
             dest_node = nodes[destination[0]]
-            #A deadline é calculada através da distancia euclidiana até à origem, é a média do tempo de deslocação a 45km/h, em segundos
+            #A deadline é calculada através da distancia euclidiana até à origem
             o_dist = calculate_euclidean_distance(o_x, o_y, dest_node['x'], dest_node['y'])
-            deadline = (o_dist / 45) * 3600
+            deadline = (o_dist / 100) * 3600
             encomendas.append(Encomenda(
                 i, None, destination, randint(1, 2), deadline))
         self.executar_algoritmo(estafetas, encomendas, self.algoritmo_gerar_var.get())
@@ -170,7 +184,8 @@ class GUI:
         print("Rotas calculadas")
         for estafeta, (t_rating, late_encomendas, n_encomendas) in late.items():
             with open(f"Resultados/Estafetas/{estafeta}_relatorio.txt", 'w') as f:
-                lines = [f"Estafeta: {estafeta}\n", f"Numero de encomendas: {n_encomendas}\n"
+                lines = [f"Estafeta: {estafeta}\n", f"Vehículo: {get_vehicle(estafeta, estafetas)}\n",
+                         f"Numero de encomendas: {n_encomendas}\n"
                     , f"Rating: {format(t_rating / n_encomendas, '.2f')}\n", 'Encomendas atrasadas:\n']
                 for enc, (delay, rating) in late_encomendas.items():
                     lines.append(f"Encomenda {enc}: {self.seconds_to_hours_minutes(delay)} (rating: {rating})\n")
@@ -185,7 +200,6 @@ class GUI:
             else:
                 ox.plot_graph_routes(GRAPH, rota, route_colors='yellow', route_linewidth=6, node_size=0, route_alpha=1,
                                      show=False, save=True, filepath=f"Resultados/Rotas/section_{section}.png")
-            print(f"Rota de estafeta {section}:")
             with open(f"Resultados/Estafetas/{section}_relatorio.txt", 'a') as f:
                 lines = [f"\n\nCusto total: {custo}\n", 'Rotas:']
                 for r in rota:
