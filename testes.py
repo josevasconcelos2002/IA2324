@@ -6,6 +6,7 @@ from encomenda import Encomenda
 from random import randint
 import random
 from estafeta import Estafeta
+import algoritmos as alg
 from algoritmos import dijkstra, bfs, dfs, iddfs, dfs_limit, bidirectional, greedy_search, astar_search
 import osmnx as ox
 import time
