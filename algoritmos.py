@@ -4,30 +4,25 @@ from enchaminhamento import aux_get
 import math
 
 
-def dfs(graph, start, end, visited=None, cost=0, path=None, visited_list=None):
-    if visited_list is None:
-        visited_list = []
-    if visited is None:
-        visited = set()
-    if path is None:
-        path = []
+def dfs(graph, start, end):
+    stack = [(start, [start], 0, set())]
 
-    visited.add(start)
-    visited_list.append(start)
-    path = path + [start]
+    while stack:
+        current, path, cost, visited = stack.pop()
 
-    if start == end:
-        return visited_list, path, round(cost, 2)
+        if current == end:
+            return visited, path, round(cost, 2)
 
-    for neighbor in graph.neighbors(start):
-        if neighbor not in visited:
-            edge_cost = aux_get(graph[start][neighbor])["length"]
-            updated_cost = cost + edge_cost
-            result = dfs(graph, neighbor, end, visited, updated_cost, path, visited_list)
-            if result:
-                return result
+        visited.add(current)
+
+        for neighbor in graph.neighbors(current):
+            if neighbor not in visited:
+                edge_cost = aux_get(graph[current][neighbor])["length"]
+                updated_cost = cost + edge_cost
+                stack.append((neighbor, path + [neighbor], updated_cost, visited))
 
     return None
+
 
 
 def bfs(graph, start, end):
