@@ -2,8 +2,6 @@ from random import randint
 import tkinter as tk
 from tkinter import ttk
 import time
-from tkinter import StringVar, Entry
-
 
 import algoritmos as alg
 import networkx as nx
@@ -20,7 +18,7 @@ GRAPH = nx.read_gml('./dados/grafo.gml')
 def get_vehicle(est_id, list_e):
     estafeta = None
     for est in list_e:
-        if est.idnt == str(est_id):
+        if est.idnt == est_id:
             estafeta = est
             break
     if estafeta.vehicle.value['type'] == 1:
@@ -30,6 +28,16 @@ def get_vehicle(est_id, list_e):
     else:
         v = 'Bicicleta'
     return v
+
+
+def calculate_deadline(dest_node):
+    nodes = GRAPH.nodes(data=True)
+    origin_node = nodes['ORIGIN']
+    o_x = origin_node['x']
+    o_y = origin_node['y']
+    o_dist = calculate_euclidean_distance(o_x, o_y, dest_node['x'], dest_node['y'])
+    return (o_dist / 100) * 3600
+
 
 class GUI:
     def __init__(self, root):
@@ -42,9 +50,6 @@ class GUI:
         self.setup_tela_boas_vindas()
         self.setup_menu_inicial()
         
-        #self.var_destino_entry = StringVar()
-        #self.var_destino_entry.trace_add("write", self.atualizar_hipoteses_destino)
-        
         self.setup_menu_encomenda()
 
         self.setup_menu_estafeta()
@@ -52,7 +57,6 @@ class GUI:
         self.setup_menu_algoritmos()
 
         self.setup_gerar()
-
 
     def setup_tela_boas_vindas(self):
         self.logo_label = tk.Label(self.root, text="Health Planet", font=("Helvetica", 24))
@@ -134,17 +138,13 @@ class GUI:
         encomendas = []
         nodes = GRAPH.nodes(data=True)
         maximum = len(nodes) - 1
-        o_x = nodes['ORIGIN']['x']
-        o_y = nodes['ORIGIN']['y']
         nodes_l = list(nodes)
         for i in range(n_encomendas):
             destination = nodes_l[randint(0, maximum)]
             while destination[0] == 5379:
                 destination = nodes_l[randint(0, maximum)]
             dest_node = nodes[destination[0]]
-            #A deadline é calculada através da distancia euclidiana até à origem
-            o_dist = calculate_euclidean_distance(o_x, o_y, dest_node['x'], dest_node['y'])
-            deadline = (o_dist / 100) * 3600
+            deadline = calculate_deadline(dest_node)
             encomendas.append(Encomenda(
                 i, None, destination, randint(1, 2), deadline))
         self.executar_algoritmo(estafetas, encomendas, self.algoritmo_gerar_var.get())
@@ -188,9 +188,9 @@ class GUI:
         r, late = route(estafetas, s, algorithm, GRAPH)
         total_time = time.time() - start_time
         print("Rotas calculadas")
-        for estafeta, (t_rating, late_encomendas, n_encomendas) in late.items():
-            with open(f"Resultados/Estafetas/{estafeta}_relatorio.txt", 'w') as f:
-                lines = [f"Estafeta: {estafeta}\n", f"Vehículo: {get_vehicle(estafeta, estafetas)}\n",
+        for section, (t_rating, late_encomendas, n_encomendas) in late.items():
+            with open(f"Resultados/Estafetas/{section}_relatorio.txt", 'w') as f:
+                lines = [f"Estafeta: {section}\n", f"Vehículo: {get_vehicle(estafetas[section].idnt, estafetas)}\n",
                          f"Numero de encomendas: {n_encomendas}\n"
                     , f"Rating: {format(t_rating / n_encomendas, '.2f')}\n", 'Encomendas atrasadas:\n']
                 for enc, (delay, rating) in late_encomendas.items():
@@ -236,7 +236,7 @@ class GUI:
         self.var_vehiculo = tk.IntVar()
 
         self.radio_bicycle = ttk.Radiobutton(
-            self.frame_estafeta, text="Bicicleta", variable=self.var_vehiculo, value=1)
+            self.frame_estafeta, text="Bicicleta", variable=self.var_vehiculo, value=3)
         self.radio_bicycle.pack()
 
         self.radio_bike = ttk.Radiobutton(
@@ -244,7 +244,7 @@ class GUI:
         self.radio_bike.pack()
 
         self.radio_car = ttk.Radiobutton(
-            self.frame_estafeta, text="Carro", variable=self.var_vehiculo, value=3)
+            self.frame_estafeta, text="Carro", variable=self.var_vehiculo, value=1)
         self.radio_car.pack()
 
         self.btn_criar_estafeta = ttk.Button(
@@ -261,6 +261,7 @@ class GUI:
         if vehiculo != 0 and nome != '':
             ESTAFETAS.append(Estafeta(nome, vehiculo))
             self.clean_estafeta_vars()
+            print(f"Estafeta {nome} adicionado")
 
     def clean_estafeta_vars(self):
         self.text_estafeta.delete("1.0", "end")
@@ -340,7 +341,7 @@ class GUI:
         self.clean_encomenda_vars()
         self.frame_encomenda.pack(pady=50)
 
-
+    
     def setup_menu_encomenda(self):
 
         self.frame_encomenda = ttk.Frame(self.root)
@@ -360,16 +361,9 @@ class GUI:
 
         self.enco_label = ttk.Label(self.frame_encomenda, text="Destino:")
         self.enco_label.pack(pady=10)
-        
+
         self.text_encomenda3 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda3.pack(pady=10)
-
-        '''
-        self.entry_destino = Entry(self.frame_encomenda, textvariable=self.var_destino_entry)
-        self.entry_destino.pack(pady=10)
-        '''
-
-
 
         self.enco_label = ttk.Label(self.frame_encomenda, text="Peso:")
         self.enco_label.pack(pady=10)
@@ -377,49 +371,30 @@ class GUI:
         self.text_encomenda4 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda4.pack(pady=10)
 
+        self.enco_label = ttk.Label(self.frame_encomenda, text="Deadline em segundos (opt.):")
+        self.enco_label.pack(pady=10)
+
+        self.text_encomenda5 = tk.Text(self.frame_encomenda, height=1, width=20)
+        self.text_encomenda5.pack(pady=10)
+
         ttk.Button(self.frame_encomenda, text="Criar", command=self.save_encomenda).pack()
         ttk.Button(self.frame_encomenda, text="Sair", command=self.mostrar_menu_inicial).pack(pady=10)
-
 
     def save_encomenda(self):
         #self.text_encomenda
         Idnt = self.text_encomenda1.get(1.0, "end-1c")
-        Client = self.text_encomenda2.get(1.0, "end-2c")
-        Origem = self.text_encomenda3.get(1.0, "end-3c")
-        Destino = self.text_encomenda4.get(1.0, "end-4c")
-        if Client != '' and Origem != '' and Destino != '':
-            ENCOMENDAS.append(Encomenda(Idnt, Client, Origem, Destino))
-            self.clean_encomenda_vars()
-            self.frame_encomenda.pack(pady=50)
-
-
-    def setup_radio_buttons(self, nodos_destino):
-        '''
-        self.var_destino = tk.IntVar()
-
-        ttk.Label(self.frame_encomenda, text="Escolha o Nodo de Destino:").pack(pady=10)
-
-        for nodo_id in nodos_destino:
-            ttk.Radiobutton(self.frame_encomenda, text=f"Nodo {nodo_id}", variable=self.var_destino, value=nodo_id).pack()
-
-        ttk.Button(self.frame_encomenda, text="Confirmar Destino", command=self.confirmar_destino).pack(pady=10)
-        '''
-
-
-    def confirmar_destino(self):
-        nodo_destino = self.var_destino.get()
-        # Atualize o objeto Encomenda com o nodo de destino escolhido
-        for encomenda in ENCOMENDAS:
-            if encomenda.destino == '':
-                encomenda.destino = nodo_destino
-                break
-        self.clean_encomenda_vars()
-        self.mostrar_menu_inicial()  # Volte ao menu inicial ou ajuste conforme necessário
-
-    def atualizar_hipoteses_destino(self, *args):
-        texto_destino = self.var_destino_entry.get()
-        nodos_destino = Encomenda.nodos_por_rua(texto_destino)
-        self.setup_radio_buttons(nodos_destino)
+        Client = self.text_encomenda2.get(1.0, "end-1c")
+        dest = self.text_encomenda3.get(1.0, "end-1c")
+        weight = self.text_encomenda4.get(1.0, "end-1c")
+        deadline = self.text_encomenda5.get(1.0, "end-1c")
+        if Idnt != '' and Client != '' and dest != '' and weight:
+            if dest.isdigit() and 0 <= int(dest) <= len(GRAPH.nodes) and weight.isdigit() and 0 < int(weight) <= 2:
+                dest_node = list(GRAPH.nodes(data=True))[int(dest)]
+                if deadline == '' or (not deadline.isdigit() and int(deadline) >= 0):
+                    deadline = calculate_deadline(dest_node[1])
+                ENCOMENDAS.append(Encomenda(Idnt, Client, dest_node, int(weight), deadline))
+                self.clean_encomenda_vars()
+                print(f"Encomenda {Idnt} adicionada.")
 
     def clean_encomenda_vars(self):
         self.text_encomenda1.delete("1.0", "end")
