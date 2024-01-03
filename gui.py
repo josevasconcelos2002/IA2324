@@ -10,6 +10,8 @@ from estafeta import Estafeta
 from encomenda import Encomenda
 from enchaminhamento import sort_encomendas, sort_estafetas, create_sections, route, calculate_euclidean_distance
 
+# -*- coding: utf-8 -*-
+
 
 ENCOMENDAS = []
 ESTAFETAS = []
@@ -42,12 +44,13 @@ def calculate_deadline(dest_node):
 class GUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Health Planet")
-        self.root.geometry("500x560")
+        self.root.title("Health Planet 🍃")
+        self.root.geometry("500x660")
         self.current_frame = self.root
 
 
         self.setup_tela_boas_vindas()
+        
         self.setup_menu_inicial()
         
         self.setup_menu_encomenda()
@@ -59,7 +62,7 @@ class GUI:
         self.setup_gerar()
 
     def setup_tela_boas_vindas(self):
-        self.logo_label = tk.Label(self.root, text="Health Planet", font=("Helvetica", 24))
+        self.logo_label = tk.Label(self.root, text=f"Health Planet", font=("Helvetica", 24))
         self.logo_label.pack(pady=50)
 
         self.continuar_btn = ttk.Button(self.root, text="Clique para Continuar", command=self.mostrar_menu_inicial)
@@ -110,7 +113,7 @@ class GUI:
         algorithms = ["dfs", "bfs", "dijkstra", "iddfs", "bidirectional", "greedy_search", "astar_search"]
 
         for algo in algorithms:
-            ttk.Radiobutton(self.frame_algoritmos, text=algo.capitalize(), variable=self.algoritmo_var, value=algo).pack()
+            ttk.Radiobutton(self.frame_algoritmos, text=algo.capitalize(), variable=self.algoritmo_var, value=algo).pack(pady=10)
 
         self.btn_executar = ttk.Button(self.frame_algoritmos, text="Executar", command=self.executar_algoritmo)
         self.btn_executar.pack(pady=10)
@@ -242,19 +245,19 @@ class GUI:
 
         self.radio_bicycle = ttk.Radiobutton(
             self.frame_estafeta, text="Bicicleta", variable=self.var_vehiculo, value=3)
-        self.radio_bicycle.pack()
+        self.radio_bicycle.pack(pady=10)
 
         self.radio_bike = ttk.Radiobutton(
             self.frame_estafeta, text="Mota", variable=self.var_vehiculo, value=2)
-        self.radio_bike.pack()
+        self.radio_bike.pack(pady=10)
 
         self.radio_car = ttk.Radiobutton(
             self.frame_estafeta, text="Carro", variable=self.var_vehiculo, value=1)
-        self.radio_car.pack()
+        self.radio_car.pack(pady=10)
 
         self.btn_criar_estafeta = ttk.Button(
             self.frame_estafeta, text="Criar", command=self.save_estafeta)
-        self.btn_criar_estafeta.pack()
+        self.btn_criar_estafeta.pack(pady=10)
 
         self.btn_sair_estafeta = ttk.Button(
             self.frame_estafeta, text="Sair", command=self.mostrar_menu_inicial)
@@ -301,31 +304,31 @@ class GUI:
 
         self.radio_dfs_gerar = ttk.Radiobutton(
             self.frame_gerar, text="DFS", variable=self.algoritmo_gerar_var, value="dfs")
-        self.radio_dfs_gerar.pack()
+        self.radio_dfs_gerar.pack(pady=5)
 
         self.radio_bfs_gerar = ttk.Radiobutton(
             self.frame_gerar, text="BFS", variable=self.algoritmo_gerar_var, value="bfs")
-        self.radio_bfs_gerar.pack()
+        self.radio_bfs_gerar.pack(pady=5)
 
         self.radio_dijkstra_gerar = ttk.Radiobutton(
             self.frame_gerar, text="Dijkstra", variable=self.algoritmo_gerar_var, value="dijkstra")
-        self.radio_dijkstra_gerar.pack()
+        self.radio_dijkstra_gerar.pack(pady=5)
 
         self.radio_iddfs_gerar = ttk.Radiobutton(
             self.frame_gerar, text="IDDFS", variable=self.algoritmo_gerar_var, value="iddfs")
-        self.radio_iddfs_gerar.pack()
+        self.radio_iddfs_gerar.pack(pady=5)
 
         self.radio_bidirectional_gerar = ttk.Radiobutton(
             self.frame_gerar, text="Bidirectional", variable=self.algoritmo_gerar_var, value="bidirectional")
-        self.radio_bidirectional_gerar.pack()
+        self.radio_bidirectional_gerar.pack(pady=5)
 
         self.radio_greedy_gerar = ttk.Radiobutton(self.frame_gerar, text="Greedy",
                                             variable=self.algoritmo_gerar_var, value="greedy_search")
-        self.radio_greedy_gerar.pack()
+        self.radio_greedy_gerar.pack(pady=5)
 
         self.radio_astar_gerar = ttk.Radiobutton(self.frame_gerar, text="A*",
                                            variable=self.algoritmo_gerar_var, value="astar_search")
-        self.radio_astar_gerar.pack()
+        self.radio_astar_gerar.pack(pady=5)
 
         self.btn_executar_gerar = ttk.Button(
             self.frame_gerar, text="Executar", command=self.executar_algoritmo_automatico)
@@ -382,7 +385,7 @@ class GUI:
         self.text_encomenda5 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda5.pack(pady=10)
 
-        ttk.Button(self.frame_encomenda, text="Criar", command=self.save_encomenda).pack()
+        ttk.Button(self.frame_encomenda, text="Criar", command=self.save_encomenda).pack(pady=10)
         ttk.Button(self.frame_encomenda, text="Sair", command=self.mostrar_menu_inicial).pack(pady=10)
 
     def save_encomenda(self):
