@@ -382,18 +382,6 @@ class GUI:
        
 
     def save_encomenda(self):
-            destino = self.text_encomenda2.get("1.0", "end-1c")
-            print("Destination:", destino)
-
-            # Check if the destination value is correct
-            if destino == "":
-                print("Destination is empty. Please enter a destination.")
-                return
-
-            # Get the nodes based on the destination using nodos_por_rua function
-            nodes = Encomenda.nodos_por_rua(destino, GRAPH)
-            print("Nodes:", nodes)
-
             # Rest of the save_encomenda function logic
             Idnt = self.text_encomenda1.get(1.0, "end-1c")
             Client = self.text_encomenda2.get(1.0, "end-1c")

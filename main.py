@@ -6,7 +6,6 @@ import gui as gui
 
 ENCOMENDAS = []
 ESTAFETAS = []
-GRAPH = nx.read_gml('./dados/grafo.gml')
 
 def main():
     root = tk.Tk()  # Fix: Tk with a capital 'T'
