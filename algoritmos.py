@@ -76,7 +76,7 @@ def dijkstra(graph, start, end):
     while current != start:
         path.insert(0, current)
         current = min((node for node in graph[current] if
-                       lengths[node] + aux_get(graph[current][node])["length"] == lengths[current]),
+                       lengths[node] + aux_get(graph[current][node])["length"] == lengths[current] and node not in path),
                       key=lambda x: aux_get(graph[current][x])["length"])
 
     return visited, path, round(lengths[end], 2)

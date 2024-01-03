@@ -199,6 +199,11 @@ class GUI:
 
         for section, v in r.items():
             rota = v['path']
+            # Elimina caminhos vazinhos que as vezes sao guardados pelo dijkstra. Tentei meter isto no algoritmos.py mas nao deu
+            if algorithm.__name__ == 'dijkstra':
+                for i in range(len(rota) - 1, -1, -1):
+                    if len(rota[i]) == 0:
+                        rota.pop(i)
             custo = v['cost']
             if len(rota) == 1:
                 ox.plot_graph_route(GRAPH, rota[0], route_color='yellow', route_linewidth=6, node_size=0, route_alpha=1,
