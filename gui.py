@@ -351,64 +351,69 @@ class GUI:
 
     
     def setup_menu_encomenda(self):
-
         self.frame_encomenda = ttk.Frame(self.root)
 
         ttk.Label(self.frame_encomenda, text="Encomenda:").pack(pady=10)
-
-        self.var_encomenda = tk.StringVar()
-
         self.text_encomenda1 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda1.pack(pady=10)
 
-        self.enco_label = ttk.Label(self.frame_encomenda, text="Cliente:")
-        self.enco_label.pack(pady=10)
+        self.var_encomenda = tk.StringVar()
 
+        ttk.Label(self.frame_encomenda, text="Cliente:").pack(pady=10)
         self.text_encomenda2 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda2.pack(pady=10)
 
-        self.enco_label = ttk.Label(self.frame_encomenda, text="Destino:")
-        self.enco_label.pack(pady=10)
-
+        ttk.Label(self.frame_encomenda, text="Destino:").pack(pady=10)
         self.text_encomenda3 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda3.pack(pady=10)
 
-        self.enco_label = ttk.Label(self.frame_encomenda, text="Peso:")
-        self.enco_label.pack(pady=10)
-
+        ttk.Label(self.frame_encomenda, text="Peso:").pack(pady=10)
         self.text_encomenda4 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda4.pack(pady=10)
 
-        self.enco_label = ttk.Label(self.frame_encomenda, text="Deadline em segundos (opt.):")
-        self.enco_label.pack(pady=10)
-
+        ttk.Label(self.frame_encomenda, text="Deadline em segundos (opt.):").pack(pady=10)
         self.text_encomenda5 = tk.Text(self.frame_encomenda, height=1, width=20)
         self.text_encomenda5.pack(pady=10)
 
         ttk.Button(self.frame_encomenda, text="Criar", command=self.save_encomenda).pack(pady=10)
         ttk.Button(self.frame_encomenda, text="Sair", command=self.mostrar_menu_inicial).pack(pady=10)
 
-    def save_encomenda(self):
-        #self.text_encomenda
-        Idnt = self.text_encomenda1.get(1.0, "end-1c")
-        Client = self.text_encomenda2.get(1.0, "end-1c")
-        dest = self.text_encomenda3.get(1.0, "end-1c")
-        weight = self.text_encomenda4.get(1.0, "end-1c")
-        deadline = self.text_encomenda5.get(1.0, "end-1c")
-        if Idnt != '' and Client != '' and dest != '' and weight:
-            if dest.isdigit() and 0 <= int(dest) <= len(GRAPH.nodes) and weight.isdigit() and 0 < int(weight) <= 2:
-                dest_node = list(GRAPH.nodes(data=True))[int(dest)]
-                if deadline == '' or (not deadline.isdigit() and int(deadline) >= 0):
-                    deadline = calculate_deadline(dest_node[1])
-                ENCOMENDAS.append(Encomenda(Idnt, Client, dest_node, int(weight), deadline))
-                self.clean_encomenda_vars()
-                print(f"Encomenda {Idnt} adicionada.")
+        # Get the destination entered by the user
+       
 
+    def save_encomenda(self):
+            destino = self.text_encomenda2.get("1.0", "end-1c")
+            print("Destination:", destino)
+
+            # Check if the destination value is correct
+            if destino == "":
+                print("Destination is empty. Please enter a destination.")
+                return
+
+            # Get the nodes based on the destination using nodos_por_rua function
+            nodes = Encomenda.nodos_por_rua(destino, GRAPH)
+            print("Nodes:", nodes)
+
+            # Rest of the save_encomenda function logic
+            Idnt = self.text_encomenda1.get(1.0, "end-1c")
+            Client = self.text_encomenda2.get(1.0, "end-1c")
+            dest = self.text_encomenda3.get(1.0, "end-1c")
+            weight = self.text_encomenda4.get(1.0, "end-1c")
+            deadline = self.text_encomenda5.get(1.0, "end-1c")
+            if Idnt != '' and Client != '' and dest != '' and weight:
+                if dest.isdigit() and 0 <= int(dest) <= len(GRAPH.nodes) and weight.isdigit() and 0 < int(weight) <= 2:
+                    dest_node = list(GRAPH.nodes(data=True))[int(dest)]
+                    if deadline == '' or (not deadline.isdigit() and int(deadline) >= 0):
+                        deadline = calculate_deadline(dest_node[1])
+                    ENCOMENDAS.append(Encomenda(Idnt, Client, dest_node, int(weight), deadline))
+                    self.clean_encomenda_vars()
+                    print(f"Encomenda {Idnt} adicionada.")
     def clean_encomenda_vars(self):
         self.text_encomenda1.delete("1.0", "end")
         self.text_encomenda2.delete("1.0", "end")
         self.text_encomenda3.delete("1.0", "end")
         self.text_encomenda4.delete("1.0", "end")
+        self.text_encomenda5.delete("1.0", "end")
 
     def mostrar_menu(self):
         # Esconder a tela de boas-vindas
@@ -417,6 +422,9 @@ class GUI:
         if self.current_frame != self.root:
             self.current_frame.pack_forget()
 
+        """
+        Clears the content of the 'text_encomenda' variables.
+        """
         self.current_frame = self.frame_menu_inicial
         # Mostrar o menu de escolha do algoritmo
         self.frame_menu_inicial.pack(pady=50)

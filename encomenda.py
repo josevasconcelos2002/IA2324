@@ -13,15 +13,12 @@ class Encomenda:
         encomenda = Encomenda(idnt, client, destination, weigth, deadline)
         return encomenda
     
-    def nodos_por_rua(rua):
+    def nodos_por_rua(rua, GRAPH):
         nodos_encontrados = []
-        
-        grafo = nx.read_gml('./dados/grafo.gml')
 
-        # Iterar sobre todos os nodos
-        for nodo_id, nodo_atributos in grafo.nodes(data=True):
+        for nodo_id, nodo_atributos in GRAPH.nodes(data=True):
             if 'name' in nodo_atributos and nodo_atributos['name'] == rua:
-                nodos_encontrados.append(nodo_atributos['source'])
-                nodos_encontrados.append(nodo_atributos['target'])
+                if 'source' in nodo_atributos and 'target' in nodo_atributos:
+                    nodos_encontrados.extend([nodo_atributos['source'], nodo_atributos['target']])
 
         return nodos_encontrados
