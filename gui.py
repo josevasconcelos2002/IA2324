@@ -1,4 +1,4 @@
-from random import randint
+import random
 import tkinter as tk
 from tkinter import ttk
 import time
@@ -40,6 +40,11 @@ def calculate_deadline(dest_node):
     o_dist = calculate_euclidean_distance(o_x, o_y, dest_node['x'], dest_node['y'])
     return (o_dist / 100) * 3600
 
+def gerar_trafico():
+    for n in GRAPH.edges(data=True):
+        n[2]['traffic'] = random.uniform(0.6, 1)
+        print(n[2]['traffic'])
+
 
 class GUI:
     def __init__(self, root):
@@ -60,6 +65,8 @@ class GUI:
         self.setup_menu_algoritmos()
 
         self.setup_gerar()
+
+        gerar_trafico()
 
     def setup_tela_boas_vindas(self):
         self.logo_label = tk.Label(self.root, text=f"Health Planet", font=("Helvetica", 24))
@@ -143,13 +150,13 @@ class GUI:
         maximum = len(nodes) - 1
         nodes_l = list(nodes)
         for i in range(n_encomendas):
-            destination = nodes_l[randint(0, maximum)]
+            destination = nodes_l[random.randint(0, maximum)]
             while destination[0] == 5379:
-                destination = nodes_l[randint(0, maximum)]
+                destination = nodes_l[random.randint(0, maximum)]
             dest_node = nodes[destination[0]]
             deadline = calculate_deadline(dest_node)
             encomendas.append(Encomenda(
-                i, None, destination, randint(1, 2), deadline))
+                i, None, destination, random.randint(1, 2), deadline))
         self.executar_algoritmo(estafetas, encomendas, self.algoritmo_gerar_var.get())
 
     def executar_algoritmo(self, estafetas=None, encomendas=None, escolha=''):
